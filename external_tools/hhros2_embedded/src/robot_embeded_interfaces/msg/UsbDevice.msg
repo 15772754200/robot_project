@@ -1,0 +1,15 @@
+string sysfs_path
+string devnode
+string subsystem
+string driver
+string vendor_id
+string product_id
+string manufacturer
+string product
+string serial
+string busnum
+string devnum
+string interface_name
+string interface_class
+string interface_subclass
+string interface_protocol

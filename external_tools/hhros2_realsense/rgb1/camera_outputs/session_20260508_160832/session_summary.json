@@ -1,0 +1,33 @@
+{
+  "session_id": "20260508_160832",
+  "device": "/dev/video0",
+  "start_time": "2026-05-08 16:08:32",
+  "end_time": "2026-05-08 16:09:43",
+  "operations": [
+    "video_mode",
+    "record_timed_5.0s",
+    "photo_mode"
+  ],
+  "saved_images": [],
+  "saved_videos": [
+    "camera_outputs/session_20260508_160832/videos/video_20260508_160840.mp4"
+  ],
+  "test_result": null,
+  "config_history": [
+    {
+      "time": "2026-05-08 16:08:34",
+      "requested": {
+        "width": 640,
+        "height": 480,
+        "fps": 30,
+        "pixfmt": "MJPG"
+      },
+      "actual": {
+        "width": 640,
+        "height": 480,
+        "fps": 30.0,
+        "fourcc": "MJPG"
+      }
+    }
+  ]
+}

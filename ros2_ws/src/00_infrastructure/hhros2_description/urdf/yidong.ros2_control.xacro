@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!--
+    ros2_control description for the Yidong humanoid.
+
+    The hardware plugin is selected at launch via the `hardware` argument:
+      * real   -> hhros2_hal/ExipcSystemHardware     (EXIPC shared-memory client)
+      * mujoco -> hhros2_sim/MujocoSystemHardware    (MuJoCo simulation)
+      * mock   -> mock_components/GenericSystem       (no hardware)
+
+    Every joint exposes the standard position/velocity/effort command and state
+    interfaces, PLUS two non-standard command interfaces `kp` and `kd` so the
+    hybrid impedance command (q_des, dq_des, tau_ff, kp, kd) crosses the
+    ros2_control boundary without a side-channel topic. Exporting the gains is
+    the key enabler for RL policy deployment and compliant/tactile control.
+  -->
+
+  <!--
+    mujoco_joint maps this ROS logical joint to its MuJoCo serial joint name so
+    the hhros2_sim plugin can bind interfaces to the MJCF. Leave empty for joints
+    with no MJCF counterpart. Real hardware
+    maps logical joints to physical motor slots and parallel-ankle actuators in
+    the L0 runtime; upper layers never address those actuators directly.
+  -->
+  <xacro:macro name="humanoid_joint" params="name mujoco_joint:=''">
+    <joint name="${name}">
+      <xacro:if value="${mujoco_joint != ''}">
+        <param name="mujoco_joint">${mujoco_joint}</param>
+      </xacro:if>
+      <!-- hybrid impedance command -->
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <command_interface name="kp"/>
+      <command_interface name="kd"/>
+      <!-- measured feedback -->
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:macro name="yidong_ros2_control" params="name hardware exipc_port:=1 shm_name:=hhros2_motor_shm qos_config:='' mujoco_model:=package://hhros2_description/models/Yidong/mjcf/scene_safety_rope.xml initial_pose:=package://hhros2_description/config/home_pose.yaml">
+    <ros2_control name="${name}" type="system">
+
+      <hardware>
+        <xacro:if value="${hardware == 'real'}">
+          <plugin>hhros2_hal/ExipcSystemHardware</plugin>
+          <param name="exipc_port">${exipc_port}</param>
+          <param name="shm_name">${shm_name}</param>
+        </xacro:if>
+        <xacro:if value="${hardware == 'mujoco'}">
+          <plugin>hhros2_sim/MujocoSystemHardware</plugin>
+          <param name="model_path">${mujoco_model}</param>
+          <param name="initial_pose_path">${initial_pose}</param>
+          <param name="floating_base_joint">base_free_joint</param>
+          <!-- Keep one MuJoCo step per 500 Hz controller-manager update. -->
+          <param name="sim_rate_hz">500.0</param>
+          <xacro:if value="${qos_config != ''}">
+            <param name="qos_config">${qos_config}</param>
+          </xacro:if>
+        </xacro:if>
+        <xacro:if value="${hardware == 'mock'}">
+          <plugin>mock_components/GenericSystem</plugin>
+          <param name="calculate_dynamics">true</param>
+        </xacro:if>
+      </hardware>
+
+      <!-- Canonical logical order; physical bus grouping is intentionally hidden. -->
+      <xacro:humanoid_joint name="left_hip_pitch_joint" mujoco_joint="left_hip_pitch_joint"/>
+      <xacro:humanoid_joint name="left_hip_roll_joint" mujoco_joint="left_hip_roll_joint"/>
+      <xacro:humanoid_joint name="left_hip_yaw_joint" mujoco_joint="left_hip_yaw_joint"/>
+      <xacro:humanoid_joint name="left_knee_joint" mujoco_joint="left_knee_joint"/>
+      <xacro:humanoid_joint name="left_ankle_pitch_joint" mujoco_joint="left_ankle_pitch_joint"/>
+      <xacro:humanoid_joint name="left_ankle_roll_joint" mujoco_joint="left_ankle_roll_joint"/>
+      <xacro:humanoid_joint name="right_hip_pitch_joint" mujoco_joint="right_hip_pitch_joint"/>
+      <xacro:humanoid_joint name="right_hip_roll_joint" mujoco_joint="right_hip_roll_joint"/>
+      <xacro:humanoid_joint name="right_hip_yaw_joint" mujoco_joint="right_hip_yaw_joint"/>
+      <xacro:humanoid_joint name="right_knee_joint" mujoco_joint="right_knee_joint"/>
+      <xacro:humanoid_joint name="right_ankle_pitch_joint" mujoco_joint="right_ankle_pitch_joint"/>
+      <xacro:humanoid_joint name="right_ankle_roll_joint" mujoco_joint="right_ankle_roll_joint"/>
+
+      <!-- Waist + upper body. -->
+      <xacro:humanoid_joint name="waist_yaw_joint" mujoco_joint="waist_yaw_joint"/>
+      <xacro:humanoid_joint name="waist_pitch_joint" mujoco_joint="waist_pitch_joint"/>
+      <!-- The locomotion MJCF is the policy's 22-DoF training plant. Keep the
+           23-slot logical ROS interface, but do not add a simulated head DOF. -->
+      <xacro:humanoid_joint name="head_yaw_joint"/>
+      <xacro:humanoid_joint name="left_shoulder_pitch_joint" mujoco_joint="left_shoulder_pitch_joint"/>
+      <xacro:humanoid_joint name="left_shoulder_roll_joint" mujoco_joint="left_shoulder_roll_joint"/>
+      <xacro:humanoid_joint name="left_shoulder_yaw_joint" mujoco_joint="left_shoulder_yaw_joint"/>
+      <xacro:humanoid_joint name="left_elbow_joint" mujoco_joint="left_elbow_joint"/>
+      <xacro:humanoid_joint name="right_shoulder_pitch_joint" mujoco_joint="right_shoulder_pitch_joint"/>
+      <xacro:humanoid_joint name="right_shoulder_roll_joint" mujoco_joint="right_shoulder_roll_joint"/>
+      <xacro:humanoid_joint name="right_shoulder_yaw_joint" mujoco_joint="right_shoulder_yaw_joint"/>
+      <xacro:humanoid_joint name="right_elbow_joint" mujoco_joint="right_elbow_joint"/>
+
+      <!--
+        IMU read by the L0 runtime and forwarded through shared memory. Exposed
+        as a ros2_control sensor so imu_sensor_broadcaster can publish /imu/data
+        without an extra driver process on the hot path.
+      -->
+      <sensor name="base_imu">
+        <state_interface name="orientation.x"/>
+        <state_interface name="orientation.y"/>
+        <state_interface name="orientation.z"/>
+        <state_interface name="orientation.w"/>
+        <state_interface name="angular_velocity.x"/>
+        <state_interface name="angular_velocity.y"/>
+        <state_interface name="angular_velocity.z"/>
+        <state_interface name="linear_acceleration.x"/>
+        <state_interface name="linear_acceleration.y"/>
+        <state_interface name="linear_acceleration.z"/>
+      </sensor>
+
+    </ros2_control>
+  </xacro:macro>
+</robot>

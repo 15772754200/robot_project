@@ -1,0 +1,9 @@
+bool use_parameter_defaults
+string subsystem
+string devnode_prefix
+bool include_without_devnode
+---
+bool ok
+int32 code
+string message
+robot_embeded_interfaces/UsbDevice[] devices

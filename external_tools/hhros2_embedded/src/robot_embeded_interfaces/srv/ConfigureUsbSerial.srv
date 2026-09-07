@@ -1,0 +1,12 @@
+bool use_parameter_defaults
+string device
+int32 baudrate
+int32 databits
+string parity
+int32 stopbits
+bool rtscts
+bool verify
+---
+bool ok
+int32 code
+string message

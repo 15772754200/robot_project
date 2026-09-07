@@ -1,0 +1,187 @@
+# Authoritative DDS QoS contract for the production ROS graph.
+#
+# This is a ROS 2 parameter file, not documentation. Every first-party endpoint
+# on a topic below must opt in through QosOverridingOptions, and every launch in
+# hhros_bringup injects this file into the node that owns that endpoint. Change
+# QoS policy values here only; do not duplicate them in source or launch files.
+# The 500 Hz joint command path inside ros2_control is an in-process pointer path
+# and is therefore intentionally outside this DDS contract.
+/**:
+  ros__parameters:
+    qos_overrides:
+      /joint_states:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+      /imu/data:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+      /robot/state_estimate:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+      /robot/odom:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+      /mujoco/base_pose:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+      /mujoco/rope/length:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+      /points:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+      /joy:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: best_effort
+          durability: volatile
+      /cmd_vel:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: reliable
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: reliable
+          durability: volatile
+      /humanoid_base_controller/reference:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: reliable
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: reliable
+          durability: volatile
+      /humanoid/arbitration_mode:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: reliable
+          durability: transient_local
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: reliable
+          durability: transient_local
+      /hhros2_core/safety_status:
+        publisher:
+          history: keep_last
+          depth: 10
+          reliability: reliable
+          durability: transient_local
+        subscription:
+          history: keep_last
+          depth: 10
+          reliability: reliable
+          durability: transient_local
+      /hhros2_core/system_health:
+        publisher:
+          history: keep_last
+          depth: 10
+          reliability: reliable
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 10
+          reliability: reliable
+          durability: volatile
+      /hhros2/heartbeat:
+        publisher:
+          history: keep_last
+          depth: 20
+          reliability: reliable
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 20
+          reliability: reliable
+          durability: volatile
+      /hhros2_behavior/instruction:
+        publisher:
+          history: keep_last
+          depth: 10
+          reliability: reliable
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 10
+          reliability: reliable
+          durability: volatile
+      /local_costmap/occupancy:
+        publisher:
+          history: keep_last
+          depth: 1
+          reliability: reliable
+          durability: volatile
+        subscription:
+          history: keep_last
+          depth: 1
+          reliability: reliable
+          durability: volatile

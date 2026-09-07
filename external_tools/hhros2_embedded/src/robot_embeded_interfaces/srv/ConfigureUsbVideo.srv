@@ -1,0 +1,11 @@
+bool use_parameter_defaults
+string device
+uint32 width
+uint32 height
+string pixfmt
+uint32 fps
+bool verify
+---
+bool ok
+int32 code
+string message

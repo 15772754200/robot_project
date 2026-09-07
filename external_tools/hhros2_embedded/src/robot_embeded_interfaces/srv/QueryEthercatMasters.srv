@@ -1,0 +1,9 @@
+bool use_parameter_defaults
+---
+bool ok
+int32 code
+string message
+int32 master_count
+string command_output
+robot_embeded_interfaces/EthercatMaster[] masters
+robot_embeded_interfaces/EthercatSlave[] slaves

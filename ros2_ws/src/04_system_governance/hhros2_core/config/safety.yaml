@@ -1,0 +1,10 @@
+hhros2_core:
+  ros__parameters:
+    controller_manager: /controller_manager
+    base_controller: humanoid_base_controller
+    damping_controller: damping_controller
+    # hhros2_behavior publishes at 5 Hz. Keep more than two publication
+    # periods of margin so ordinary executor jitter cannot latch damping.
+    heartbeat_timeout_s: 0.5
+    tilt_fault_rad: 0.6
+    reflex_cut_l0_enable: false

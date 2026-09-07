@@ -1,0 +1,82 @@
+--- 2026-07-29 17:23:58 | Interface: lo ---
+Flags: LOOPBACK,UP,LOWER_UP
+MAC: 00:00:00:00:00:00
+IPv4: 127.0.0.1
+IPv6: ::1
+Type: Wired
+Link detected: yes
+Speed: N/A
+Duplex: N/A
+Default route via this interface: No
+DNS servers: 8.8.8.8, 192.168.0.1
+
+--- 2026-07-29 17:23:58 | Interface: eno1 ---
+Flags: NO-CARRIER,BROADCAST,MULTICAST,UP
+MAC: 3c:6d:66:fb:eb:1a
+IPv4: N/A
+IPv6: N/A
+Type: Wired
+Link detected: no
+Speed: Unknown
+Duplex: N/A
+Default route via this interface: No
+DNS servers: 8.8.8.8, 192.168.0.1
+
+--- 2026-07-29 17:23:58 | Interface: wlP1p1s0 ---
+Flags: BROADCAST,MULTICAST,UP,LOWER_UP
+MAC: 94:ba:06:fa:bc:06
+IPv4: 192.168.0.13
+IPv6: 240e:390:3c8:2bb0::32, 240e:390:3c8:2bb0:56e:fd2e:9da6:ebdb, 240e:390:3c8:2bb0:8023:597c:9a8d:e7cd, fe80::eebe:8855:e5a:aedd
+Type: Wireless
+Signal: 0 dBm (from /proc/net/wireless)
+Default route via this interface: Yes
+Gateway: 192.168.0.1
+DNS servers: 8.8.8.8, 192.168.0.1
+
+--- 2026-07-29 17:23:58 | Interface: wlan1 ---
+Flags: BROADCAST,MULTICAST,UP,LOWER_UP
+MAC: 96:ba:06:fa:bc:06
+IPv4: 192.168.0.58
+IPv6: 240e:390:3c8:2bb0::2, 240e:390:3c8:2bb0:69e3:3908:c12c:1a7a, 240e:390:3c8:2bb0:97b8:b2ed:8bb3:c26c, fe80::a6fa:a28d:1171:f536
+Type: Wireless
+Signal: 0 dBm (from /proc/net/wireless)
+Default route via this interface: Yes
+Gateway: 192.168.0.1
+DNS servers: 8.8.8.8, 192.168.0.1
+
+--- 2026-07-29 17:23:58 | Interface: usb0 ---
+Flags: NO-CARRIER,BROADCAST,MULTICAST,UP
+MAC: 5a:d6:30:b2:9d:15
+IPv4: N/A
+IPv6: N/A
+Type: Wired
+Link detected: no
+Speed: N/A
+Duplex: N/A
+Default route via this interface: No
+DNS servers: 8.8.8.8, 192.168.0.1
+
+--- 2026-07-29 17:23:58 | Interface: usb1 ---
+Flags: NO-CARRIER,BROADCAST,MULTICAST,UP
+MAC: 5a:d6:30:b2:9d:17
+IPv4: N/A
+IPv6: N/A
+Type: Wired
+Link detected: no
+Speed: N/A
+Duplex: N/A
+Default route via this interface: No
+DNS servers: 8.8.8.8, 192.168.0.1
+
+--- 2026-07-29 17:23:58 | Interface: docker0 ---
+Flags: NO-CARRIER,BROADCAST,MULTICAST,UP
+MAC: ca:29:2f:9f:ac:9d
+IPv4: 172.17.0.1
+IPv6: N/A
+Type: Wired
+Link detected: no
+Speed: Unknown
+Duplex: N/A
+Default route via this interface: No
+DNS servers: 8.8.8.8, 192.168.0.1
+

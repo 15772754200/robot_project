@@ -1,0 +1,12 @@
+<library path="hhros2_hal">
+  <class
+      name="hhros2_hal/ExipcSystemHardware"
+      type="hhros2_hal::ExipcSystemHardware"
+      base_class_type="hardware_interface::SystemInterface">
+    <description>
+      EXIPC shared-memory client SystemInterface for the Yidong humanoid. Exports
+      position/velocity/effort + kp/kd command interfaces and an IMU sensor, and
+      exchanges data with the L0 real-time runtime through lock-free shared memory.
+    </description>
+  </class>
+</library>

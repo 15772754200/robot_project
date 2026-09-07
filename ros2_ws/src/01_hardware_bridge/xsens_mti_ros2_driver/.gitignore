@@ -1,0 +1,6 @@
+# Xsens xspublic Makefiles build in-place.
+lib/xspublic/**/*.a
+lib/xspublic/**/*.o
+lib/xspublic/**/*.d
+lib/xspublic/**/*.dpp
+lib/xspublic/**/*.so

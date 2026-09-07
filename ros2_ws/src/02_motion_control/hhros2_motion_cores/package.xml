@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>hhros2_motion_cores</name>
+  <version>0.1.0</version>
+  <description>
+    The motion-control "dual core" (02_motion_control): the RL policy core and
+    the WBC/QP core. Both are rclcpp components that, at 50-100 Hz, turn task
+    commands plus the state estimate into a hybrid joint reference for the
+    chainable humanoid_base_controller. Arbitration ensures only one core drives
+    the actuators at a time.
+  </description>
+  <maintainer email="robotics@example.com">robot_platform maintainers</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>rclcpp_components</depend>
+  <depend>geometry_msgs</depend>
+  <depend>hhros2_interfaces</depend>
+  <depend>hhros2_log</depend>
+  <depend>yaml-cpp</depend>
+  <depend>eigen</depend>
+  <depend>sensor_msgs</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

@@ -1,0 +1,17 @@
+# Teach control request.
+# command: "start_record", "stop_record", "pause_record", "resume_record",
+#          "save_trajectory", "load_trajectory", "play_trajectory",
+#          or "stop_playback".
+string command
+string trajectory_id
+string description
+float32 record_frequency
+float32 play_speed
+bool loop_playback
+---
+# Teach control response.
+bool success
+string message
+string current_state
+int32 frame_count
+float32 progress

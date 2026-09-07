@@ -1,0 +1,11 @@
+<library path="hhros2_sim">
+  <class
+      name="hhros2_sim/MujocoSystemHardware"
+      type="hhros2_sim::MujocoSystemHardware"
+      base_class_type="hardware_interface::SystemInterface">
+    <description>
+      MuJoCo SystemInterface exposing the same logical control interfaces as
+      the real HAL. MuJoCo and a valid model are required at startup.
+    </description>
+  </class>
+</library>

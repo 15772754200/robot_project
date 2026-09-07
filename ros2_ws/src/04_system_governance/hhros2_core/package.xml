@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>hhros2_core</name>
+  <version>0.1.0</version>
+  <description>
+    System governance core (04_system_governance): the centralized safety state
+    machine, control-mode arbiter and tiered diagnostics. Detects Level 1/Level 2
+    faults from heartbeats, IMU tilt and L0 status, and on a critical fault drives
+    the safe reflex (switch to damping_controller and/or cut the L0 bus enable).
+  </description>
+  <maintainer email="robotics@example.com">robot_platform maintainers</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>controller_manager_msgs</depend>
+  <depend>hhros2_interfaces</depend>
+  <depend>hhros2_hal</depend>
+  <depend>hhros2_motor_diagnostics</depend>
+  <depend>hhros2_log</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

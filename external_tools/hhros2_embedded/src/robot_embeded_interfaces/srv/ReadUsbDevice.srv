@@ -1,0 +1,10 @@
+bool use_parameter_defaults
+string devnode
+uint32 max_bytes
+int32 timeout_ms
+---
+bool ok
+int32 code
+string message
+uint8[] data
+uint32 bytes_read

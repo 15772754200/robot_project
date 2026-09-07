@@ -1,0 +1,13 @@
+# Play back a whole-body / CSV motion sequence (wave, get-up, dance, ...).
+# Used by the behavior layer to trigger scripted or imitation motions.
+#
+# Goal
+string motion_name               # registered motion / CSV id
+float64 playback_speed           # 1.0 = nominal; >1 faster, <1 slower
+---
+# Result
+bool success
+string message
+---
+# Feedback
+float64 progress                 # 0.0 .. 1.0

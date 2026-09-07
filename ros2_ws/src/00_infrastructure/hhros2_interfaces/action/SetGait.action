@@ -1,0 +1,16 @@
+# High-level locomotion command from the task / navigation layer (L3/L2) to the
+# mid-level locomotion controller (L1). Preemptable: a new goal or cancel stops
+# the current gait.
+#
+# Goal
+string gait_name                 # "walk" | "stand" | "run" | ...
+geometry_msgs/Twist cmd_vel      # desired base velocity command
+float64 duration                 # seconds; 0 = hold until preempted/canceled
+---
+# Result
+bool success
+string message
+---
+# Feedback
+geometry_msgs/Twist current_velocity
+float64 elapsed

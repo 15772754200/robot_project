@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>hhros2_teleop</name>
+  <version>0.1.0</version>
+  <description>Legacy keyboard teleoperation and peripheral support utilities for HHROS2.</description>
+  <maintainer email="robotics@example.com">robot_platform maintainers</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>rclcpp_lifecycle</depend>
+  <depend>geometry_msgs</depend>
+  <depend>hhros2_interfaces</depend>
+  <depend>ament_index_cpp</depend>
+  <depend>hhros2_log</depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

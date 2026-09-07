@@ -1,0 +1,29 @@
+{
+  "session_id": "20260508_160721",
+  "device": "/dev/video0",
+  "start_time": "2026-05-08 16:07:21",
+  "end_time": "2026-05-08 16:07:55",
+  "operations": [
+    "photo_mode"
+  ],
+  "saved_images": [],
+  "saved_videos": [],
+  "test_result": null,
+  "config_history": [
+    {
+      "time": "2026-05-08 16:07:23",
+      "requested": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "pixfmt": "MJPG"
+      },
+      "actual": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 30.0,
+        "fourcc": "MJPG"
+      }
+    }
+  ]
+}

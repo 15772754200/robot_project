@@ -1,0 +1,41 @@
+# Parameters for the RL and WBC motion cores. served_mode binds each core to an
+# ArbitrationMode value so only one motion core drives the controller reference.
+
+rl_stand_core:
+  ros__parameters:
+    rate_hz: 50.0
+    served_mode: 2          # MODE_STAND
+    default_kp: 40.0
+    default_kd: 1.0
+    damping_kd: 2.0
+    prepare_duration_sec: 1.0
+    base_state_source: "estimator"
+
+rl_walk_core:
+  ros__parameters:
+    rate_hz: 50.0
+    served_mode: 3          # MODE_WALK
+    default_kp: 40.0
+    default_kd: 1.0
+    damping_kd: 2.0
+    # The locomotion policy owns its transition from the measured stand pose.
+    # Reset its history at mode handoff without adding a pose interpolation.
+    prepare_duration_sec: 0.0
+    base_state_source: "estimator"
+
+rl_run_core:
+  ros__parameters:
+    rate_hz: 50.0
+    served_mode: 4          # MODE_RUN
+    default_kp: 40.0
+    default_kd: 1.0
+    damping_kd: 2.0
+    prepare_duration_sec: 0.0
+    base_state_source: "estimator"
+
+wbc_core:
+  ros__parameters:
+    rate_hz: 100.0
+    served_mode: 5          # MODE_WBC
+    default_kp: 120.0
+    default_kd: 3.0

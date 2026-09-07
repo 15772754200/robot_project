@@ -1,0 +1,36 @@
+<library path="hhros2_controllers">
+  <class
+      name="hhros2_controllers/HumanoidBaseController"
+      type="hhros2_controllers::HumanoidBaseController"
+      base_class_type="controller_interface::ChainableControllerInterface">
+    <description>
+      Chainable 500 Hz base controller. Interpolates a hybrid (q, dq, tau, kp, kd)
+      reference from the RL/WBC cores onto the HAL command interfaces.
+    </description>
+  </class>
+  <class
+      name="hhros2_controllers/DampingController"
+      type="hhros2_controllers::DampingController"
+      base_class_type="controller_interface::ControllerInterface">
+    <description>
+      Safe-reflex damping controller. Commands zero stiffness with fixed joint
+      damping so the robot folds down gently on a Level 2 fault.
+    </description>
+  </class>
+  <class
+      name="hhros2_controllers/PlatformJointStateBroadcaster"
+      type="hhros2_controllers::PlatformJointStateBroadcaster"
+      base_class_type="controller_interface::ControllerInterface">
+    <description>
+      Publishes canonical joint state through the platform QoS contract.
+    </description>
+  </class>
+  <class
+      name="hhros2_controllers/PlatformImuBroadcaster"
+      type="hhros2_controllers::PlatformImuBroadcaster"
+      base_class_type="controller_interface::ControllerInterface">
+    <description>
+      Publishes ros2_control IMU state through the platform QoS contract.
+    </description>
+  </class>
+</library>

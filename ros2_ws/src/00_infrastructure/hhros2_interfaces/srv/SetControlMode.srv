@@ -1,0 +1,12 @@
+# Request a discrete control mode transition (replaces /control_mode Int32).
+# Routed through the hhros2_core arbiter, which may reject the request when a
+# safety reflex is active.
+#
+# mode values (mirrors ArbitrationMode constants):
+#   0 = passive   1 = damping   2 = stand   3 = walk
+#   4 = run       5 = wbc       6 = motion
+int32 mode
+---
+bool success
+int32 active_mode
+string message

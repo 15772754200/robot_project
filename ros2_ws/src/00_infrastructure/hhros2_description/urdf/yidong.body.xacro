@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!--
+    Simplified but structurally valid kinematic tree for the 23-DoF Yidong
+    humanoid. Link geometry is placeholder (unit boxes + nominal inertia) so the
+    URDF loads cleanly into controller_manager / robot_state_publisher. Replace
+    the meshes and inertials with the production values migrated from
+    robot_deploy_sim/models/Yidong when integrating the full model.
+  -->
+
+  <xacro:property name="joint_effort" value="200.0"/>
+  <xacro:property name="joint_velocity" value="20.0"/>
+  <xacro:property name="joint_lower" value="-3.14"/>
+  <xacro:property name="joint_upper" value="3.14"/>
+
+  <xacro:macro name="link_box" params="name mass:=0.5 size:=0.05">
+    <link name="${name}">
+      <visual>
+        <geometry><box size="${size} ${size} ${size}"/></geometry>
+      </visual>
+      <collision>
+        <geometry><box size="${size} ${size} ${size}"/></geometry>
+      </collision>
+      <inertial>
+        <mass value="${mass}"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <xacro:macro name="rev_joint" params="name parent child axis:='0 0 1' xyz:='0 0 -0.1'">
+    <joint name="${name}" type="revolute">
+      <parent link="${parent}"/>
+      <child link="${child}"/>
+      <origin xyz="${xyz}" rpy="0 0 0"/>
+      <axis xyz="${axis}"/>
+      <limit lower="${joint_lower}" upper="${joint_upper}"
+             effort="${joint_effort}" velocity="${joint_velocity}"/>
+      <dynamics damping="0.1" friction="0.0"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:macro name="yidong_body">
+    <!-- root / floating-base attach point -->
+    <xacro:link_box name="base_link" mass="10.0" size="0.2"/>
+
+    <!-- ===== Left leg ===== -->
+    <xacro:link_box name="left_hip_pitch_link"/>
+    <xacro:link_box name="left_hip_roll_link"/>
+    <xacro:link_box name="left_hip_yaw_link"/>
+    <xacro:link_box name="left_knee_link"/>
+    <xacro:link_box name="left_ankle_pitch_link"/>
+    <xacro:link_box name="left_foot_link"/>
+    <xacro:rev_joint name="left_hip_pitch_joint" parent="base_link"        child="left_hip_pitch_link" axis="0 1 0"/>
+    <xacro:rev_joint name="left_hip_roll_joint"  parent="left_hip_pitch_link" child="left_hip_roll_link"  axis="1 0 0"/>
+    <xacro:rev_joint name="left_hip_yaw_joint"   parent="left_hip_roll_link"  child="left_hip_yaw_link"   axis="0 0 1"/>
+    <xacro:rev_joint name="left_knee_joint"      parent="left_hip_yaw_link"   child="left_knee_link"      axis="0 1 0"/>
+    <xacro:rev_joint name="left_ankle_pitch_joint"   parent="left_knee_link"      child="left_ankle_pitch_link" axis="0 1 0"/>
+    <xacro:rev_joint name="left_ankle_roll_joint"    parent="left_ankle_pitch_link" child="left_foot_link"     axis="1 0 0"/>
+
+    <!-- ===== Right leg ===== -->
+    <xacro:link_box name="right_hip_pitch_link"/>
+    <xacro:link_box name="right_hip_roll_link"/>
+    <xacro:link_box name="right_hip_yaw_link"/>
+    <xacro:link_box name="right_knee_link"/>
+    <xacro:link_box name="right_ankle_pitch_link"/>
+    <xacro:link_box name="right_foot_link"/>
+    <xacro:rev_joint name="right_hip_pitch_joint" parent="base_link"          child="right_hip_pitch_link" axis="0 1 0"/>
+    <xacro:rev_joint name="right_hip_roll_joint"  parent="right_hip_pitch_link" child="right_hip_roll_link" axis="1 0 0"/>
+    <xacro:rev_joint name="right_hip_yaw_joint"   parent="right_hip_roll_link"  child="right_hip_yaw_link"  axis="0 0 1"/>
+    <xacro:rev_joint name="right_knee_joint"      parent="right_hip_yaw_link"   child="right_knee_link"     axis="0 1 0"/>
+    <xacro:rev_joint name="right_ankle_pitch_joint"   parent="right_knee_link"       child="right_ankle_pitch_link" axis="0 1 0"/>
+    <xacro:rev_joint name="right_ankle_roll_joint"    parent="right_ankle_pitch_link" child="right_foot_link"    axis="1 0 0"/>
+
+    <!-- ===== Waist ===== -->
+    <xacro:link_box name="waist_yaw_link"/>
+    <xacro:link_box name="torso_link" mass="8.0" size="0.18"/>
+    <xacro:rev_joint name="waist_yaw_joint"   parent="base_link"      child="waist_yaw_link" axis="0 0 1" xyz="0 0 0.1"/>
+    <xacro:rev_joint name="waist_pitch_joint" parent="waist_yaw_link" child="torso_link"     axis="0 1 0" xyz="0 0 0.1"/>
+
+    <!-- ===== Head ===== -->
+    <xacro:link_box name="head_link"/>
+    <xacro:rev_joint name="head_yaw_joint" parent="torso_link" child="head_link" axis="0 0 1" xyz="0 0 0.2"/>
+
+    <!-- ===== Left arm ===== -->
+    <xacro:link_box name="left_shoulder_pitch_link"/>
+    <xacro:link_box name="left_shoulder_roll_link"/>
+    <xacro:link_box name="left_shoulder_yaw_link"/>
+    <xacro:link_box name="left_elbow_link"/>
+    <xacro:rev_joint name="left_shoulder_pitch_joint" parent="torso_link"               child="left_shoulder_pitch_link" axis="0 1 0" xyz="0 0.18 0.15"/>
+    <xacro:rev_joint name="left_shoulder_roll_joint"  parent="left_shoulder_pitch_link" child="left_shoulder_roll_link"  axis="1 0 0"/>
+    <xacro:rev_joint name="left_shoulder_yaw_joint"   parent="left_shoulder_roll_link"  child="left_shoulder_yaw_link"   axis="0 0 1"/>
+    <xacro:rev_joint name="left_elbow_joint"          parent="left_shoulder_yaw_link"   child="left_elbow_link"          axis="0 1 0"/>
+
+    <!-- ===== Right arm ===== -->
+    <xacro:link_box name="right_shoulder_pitch_link"/>
+    <xacro:link_box name="right_shoulder_roll_link"/>
+    <xacro:link_box name="right_shoulder_yaw_link"/>
+    <xacro:link_box name="right_elbow_link"/>
+    <xacro:rev_joint name="right_shoulder_pitch_joint" parent="torso_link"                child="right_shoulder_pitch_link" axis="0 1 0" xyz="0 -0.18 0.15"/>
+    <xacro:rev_joint name="right_shoulder_roll_joint"  parent="right_shoulder_pitch_link" child="right_shoulder_roll_link"  axis="1 0 0"/>
+    <xacro:rev_joint name="right_shoulder_yaw_joint"   parent="right_shoulder_roll_link"  child="right_shoulder_yaw_link"   axis="0 0 1"/>
+    <xacro:rev_joint name="right_elbow_joint"          parent="right_shoulder_yaw_link"   child="right_elbow_link"          axis="0 1 0"/>
+
+    <!-- IMU mount frame (xsens MTi) -->
+    <xacro:link_box name="imu_link" mass="0.05" size="0.02"/>
+    <joint name="imu_joint" type="fixed">
+      <parent link="torso_link"/>
+      <child link="imu_link"/>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    </joint>
+  </xacro:macro>
+</robot>

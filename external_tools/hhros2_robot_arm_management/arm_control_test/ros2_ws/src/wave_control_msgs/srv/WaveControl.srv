@@ -1,0 +1,7 @@
+# 请求
+WaveCommand command
+---
+# 响应
+bool success
+string message
+WaveStatus current_status

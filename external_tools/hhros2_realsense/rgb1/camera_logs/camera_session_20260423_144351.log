@@ -1,0 +1,276 @@
+[2026-04-23 14:43:51,732] INFO: Log file: camera_logs/camera_session_20260423_144351.log
+[2026-04-23 14:43:51,733] INFO: 准备打开摄像头: /dev/video0
+[2026-04-23 14:43:51,733] INFO: 请求参数: {'width': 1920, 'height': 1080, 'fps': 30, 'pixfmt': 'MJPG'}, fourcc=MJPG
+[2026-04-23 14:44:22,389] INFO: 实际参数: {'width': 1920, 'height': 1080, 'fps': 30.0, 'fourcc': 'MJPG'}
+[2026-04-23 14:44:22,390] INFO: 开始应用 v4l2 控制参数（曝光/白平衡/增益等）
+[2026-04-23 14:44:22,395] INFO: 设置控制项成功: auto_exposure=0
+[2026-04-23 14:44:22,409] INFO: ===== v4l2-ctl --all =====
+[2026-04-23 14:44:22,409] INFO: Driver Info:
+[2026-04-23 14:44:22,409] INFO: 	Driver name      : uvcvideo
+[2026-04-23 14:44:22,409] INFO: 	Card type        : 1080P USB Camera-A: 1080P USB C
+[2026-04-23 14:44:22,409] INFO: 	Bus info         : usb-3610000.usb-2.4.4
+[2026-04-23 14:44:22,409] INFO: 	Driver version   : 5.15.0
+[2026-04-23 14:44:22,409] INFO: 	Capabilities     : 0x84a00001
+[2026-04-23 14:44:22,409] INFO: 		Video Capture
+[2026-04-23 14:44:22,409] INFO: 		Metadata Capture
+[2026-04-23 14:44:22,409] INFO: 		Streaming
+[2026-04-23 14:44:22,409] INFO: 		Extended Pix Format
+[2026-04-23 14:44:22,409] INFO: 		Device Capabilities
+[2026-04-23 14:44:22,409] INFO: 	Device Caps      : 0x04200001
+[2026-04-23 14:44:22,410] INFO: 		Video Capture
+[2026-04-23 14:44:22,410] INFO: 		Streaming
+[2026-04-23 14:44:22,410] INFO: 		Extended Pix Format
+[2026-04-23 14:44:22,410] INFO: Media Driver Info:
+[2026-04-23 14:44:22,410] INFO: 	Driver name      : uvcvideo
+[2026-04-23 14:44:22,410] INFO: 	Model            : 1080P USB Camera-A: 1080P USB C
+[2026-04-23 14:44:22,410] INFO: 	Serial           : 00000000_P050100_SN0002
+[2026-04-23 14:44:22,410] INFO: 	Bus info         : usb-3610000.usb-2.4.4
+[2026-04-23 14:44:22,410] INFO: 	Media version    : 5.15.0
+[2026-04-23 14:44:22,410] INFO: 	Hardware revision: 0x00003251 (12881)
+[2026-04-23 14:44:22,410] INFO: 	Driver version   : 5.15.0
+[2026-04-23 14:44:22,410] INFO: Interface Info:
+[2026-04-23 14:44:22,410] INFO: 	ID               : 0x03000002
+[2026-04-23 14:44:22,410] INFO: 	Type             : V4L Video
+[2026-04-23 14:44:22,410] INFO: Entity Info:
+[2026-04-23 14:44:22,410] INFO: 	ID               : 0x00000001 (1)
+[2026-04-23 14:44:22,410] INFO: 	Name             : 1080P USB Camera-A: 1080P USB C
+[2026-04-23 14:44:22,410] INFO: 	Function         : V4L2 I/O
+[2026-04-23 14:44:22,410] INFO: 	Flags            : default
+[2026-04-23 14:44:22,410] INFO: 	Pad 0x01000007   : 0: Sink
+[2026-04-23 14:44:22,410] INFO: 	  Link 0x02000010: from remote pad 0x100000a of entity 'Extension 3' (Video Pixel Formatter): Data, Enabled, Immutable
+[2026-04-23 14:44:22,410] INFO: Priority: 2
+[2026-04-23 14:44:22,410] INFO: Video input : 0 (Input 1: ok)
+[2026-04-23 14:44:22,411] INFO: Format Video Capture:
+[2026-04-23 14:44:22,411] INFO: 	Width/Height      : 1920/1080
+[2026-04-23 14:44:22,411] INFO: 	Pixel Format      : 'MJPG' (Motion-JPEG)
+[2026-04-23 14:44:22,411] INFO: 	Field             : None
+[2026-04-23 14:44:22,411] INFO: 	Bytes per Line    : 0
+[2026-04-23 14:44:22,411] INFO: 	Size Image        : 4147200
+[2026-04-23 14:44:22,411] INFO: 	Colorspace        : Default
+[2026-04-23 14:44:22,411] INFO: 	Transfer Function : Default (maps to Rec. 709)
+[2026-04-23 14:44:22,411] INFO: 	YCbCr/HSV Encoding: Default (maps to ITU-R 601)
+[2026-04-23 14:44:22,411] INFO: 	Quantization      : Default (maps to Full Range)
+[2026-04-23 14:44:22,411] INFO: 	Flags             : 
+[2026-04-23 14:44:22,411] INFO: Crop Capability Video Capture:
+[2026-04-23 14:44:22,411] INFO: 	Bounds      : Left 0, Top 0, Width 1920, Height 1080
+[2026-04-23 14:44:22,411] INFO: 	Default     : Left 0, Top 0, Width 1920, Height 1080
+[2026-04-23 14:44:22,411] INFO: 	Pixel Aspect: 1/1
+[2026-04-23 14:44:22,411] INFO: Selection Video Capture: crop_default, Left 0, Top 0, Width 1920, Height 1080, Flags: 
+[2026-04-23 14:44:22,411] INFO: Selection Video Capture: crop_bounds, Left 0, Top 0, Width 1920, Height 1080, Flags: 
+[2026-04-23 14:44:22,411] INFO: Streaming Parameters Video Capture:
+[2026-04-23 14:44:22,411] INFO: 	Capabilities     : timeperframe
+[2026-04-23 14:44:22,411] INFO: 	Frames per second: 30.000 (30/1)
+[2026-04-23 14:44:22,411] INFO: 	Read buffers     : 0
+[2026-04-23 14:44:22,412] INFO: 
+[2026-04-23 14:44:22,412] INFO: User Controls
+[2026-04-23 14:44:22,412] INFO: 
+[2026-04-23 14:44:22,412] INFO:                      brightness 0x00980900 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:44:22,412] INFO:                        contrast 0x00980901 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:44:22,412] INFO:                      saturation 0x00980902 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:44:22,412] INFO:         white_balance_automatic 0x0098090c (bool)   : default=1 value=1
+[2026-04-23 14:44:22,412] INFO:                            gain 0x00980913 (int)    : min=0 max=255 step=1 default=255 value=255
+[2026-04-23 14:44:22,412] INFO:       white_balance_temperature 0x0098091a (int)    : min=2700 max=7500 step=1 default=5100 value=5100 flags=inactive
+[2026-04-23 14:44:22,412] INFO:                       sharpness 0x0098091b (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:44:22,412] INFO:          backlight_compensation 0x0098091c (int)    : min=0 max=1 step=1 default=1 value=1
+[2026-04-23 14:44:22,412] INFO: 
+[2026-04-23 14:44:22,412] INFO: Camera Controls
+[2026-04-23 14:44:22,412] INFO: 
+[2026-04-23 14:44:22,412] INFO:                   auto_exposure 0x009a0901 (menu)   : min=0 max=3 default=0 value=0 (Auto Mode)
+[2026-04-23 14:44:22,412] INFO: 				0: Auto Mode
+[2026-04-23 14:44:22,412] INFO: 				1: Manual Mode
+[2026-04-23 14:44:22,412] INFO: 				2: Shutter Priority Mode
+[2026-04-23 14:44:22,412] INFO: 				3: Aperture Priority Mode
+[2026-04-23 14:44:22,412] INFO:          exposure_time_absolute 0x009a0902 (int)    : min=5 max=2500 step=1 default=2500 value=2500 flags=inactive
+[2026-04-23 14:44:22,412] INFO:      exposure_dynamic_framerate 0x009a0903 (bool)   : default=0 value=0
+[2026-04-23 14:44:22,412] INFO:                   zoom_absolute 0x009a090d (int)    : min=0 max=200 step=1 default=0 value=0
+[2026-04-23 14:44:22,412] INFO: ===== v4l2-ctl --get-fmt-video =====
+[2026-04-23 14:44:22,413] INFO: Format Video Capture:
+[2026-04-23 14:44:22,413] INFO: 	Width/Height      : 1920/1080
+[2026-04-23 14:44:22,413] INFO: 	Pixel Format      : 'MJPG' (Motion-JPEG)
+[2026-04-23 14:44:22,413] INFO: 	Field             : None
+[2026-04-23 14:44:22,413] INFO: 	Bytes per Line    : 0
+[2026-04-23 14:44:22,413] INFO: 	Size Image        : 4147200
+[2026-04-23 14:44:22,413] INFO: 	Colorspace        : Default
+[2026-04-23 14:44:22,413] INFO: 	Transfer Function : Default (maps to Rec. 709)
+[2026-04-23 14:44:22,413] INFO: 	YCbCr/HSV Encoding: Default (maps to ITU-R 601)
+[2026-04-23 14:44:22,413] INFO: 	Quantization      : Default (maps to Full Range)
+[2026-04-23 14:44:22,413] INFO: 	Flags             : 
+[2026-04-23 14:44:22,413] INFO: ===== v4l2-ctl --list-ctrls =====
+[2026-04-23 14:44:22,413] INFO: 
+[2026-04-23 14:44:22,413] INFO: User Controls
+[2026-04-23 14:44:22,413] INFO: 
+[2026-04-23 14:44:22,413] INFO:                      brightness 0x00980900 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:44:22,413] INFO:                        contrast 0x00980901 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:44:22,413] INFO:                      saturation 0x00980902 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:44:22,413] INFO:         white_balance_automatic 0x0098090c (bool)   : default=1 value=1
+[2026-04-23 14:44:22,413] INFO:                            gain 0x00980913 (int)    : min=0 max=255 step=1 default=255 value=255
+[2026-04-23 14:44:22,414] INFO:       white_balance_temperature 0x0098091a (int)    : min=2700 max=7500 step=1 default=5100 value=5100 flags=inactive
+[2026-04-23 14:44:22,414] INFO:                       sharpness 0x0098091b (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:44:22,414] INFO:          backlight_compensation 0x0098091c (int)    : min=0 max=1 step=1 default=1 value=1
+[2026-04-23 14:44:22,414] INFO: 
+[2026-04-23 14:44:22,414] INFO: Camera Controls
+[2026-04-23 14:44:22,414] INFO: 
+[2026-04-23 14:44:22,414] INFO:                   auto_exposure 0x009a0901 (menu)   : min=0 max=3 default=0 value=0 (Auto Mode)
+[2026-04-23 14:44:22,414] INFO:          exposure_time_absolute 0x009a0902 (int)    : min=5 max=2500 step=1 default=2500 value=2500 flags=inactive
+[2026-04-23 14:44:22,414] INFO:      exposure_dynamic_framerate 0x009a0903 (bool)   : default=0 value=0
+[2026-04-23 14:44:22,414] INFO:                   zoom_absolute 0x009a090d (int)    : min=0 max=200 step=1 default=0 value=0
+[2026-04-23 14:44:54,472] INFO: 进入【视频模式-手动】按键：r=开始/停止  b=返回主菜单  q=退出程序
+[2026-04-23 14:44:54,473] INFO: 提示：窗口按键需要点击窗口获得焦点；终端输入需要回车。
+[2026-04-23 14:45:07,301] INFO: 录制开始 -> camera_outputs/session_20260423_144351/videos/video_20260423_144507.mp4
+[2026-04-23 14:45:21,562] INFO: 录制停止并保存 -> camera_outputs/session_20260423_144351/videos/video_20260423_144507.mp4
+[2026-04-23 14:46:04,752] INFO: 当前相机参数(OpenCV): {'width': 1920, 'height': 1080, 'fps': 30.0, 'fourcc': 'MJPG'}
+[2026-04-23 14:46:20,399] INFO: ===== v4l2-ctl --all =====
+[2026-04-23 14:46:20,399] INFO: Driver Info:
+[2026-04-23 14:46:20,399] INFO: 	Driver name      : uvcvideo
+[2026-04-23 14:46:20,399] INFO: 	Card type        : 1080P USB Camera-A: 1080P USB C
+[2026-04-23 14:46:20,399] INFO: 	Bus info         : usb-3610000.usb-2.4.4
+[2026-04-23 14:46:20,399] INFO: 	Driver version   : 5.15.0
+[2026-04-23 14:46:20,399] INFO: 	Capabilities     : 0x84a00001
+[2026-04-23 14:46:20,400] INFO: 		Video Capture
+[2026-04-23 14:46:20,400] INFO: 		Metadata Capture
+[2026-04-23 14:46:20,400] INFO: 		Streaming
+[2026-04-23 14:46:20,400] INFO: 		Extended Pix Format
+[2026-04-23 14:46:20,400] INFO: 		Device Capabilities
+[2026-04-23 14:46:20,400] INFO: 	Device Caps      : 0x04200001
+[2026-04-23 14:46:20,400] INFO: 		Video Capture
+[2026-04-23 14:46:20,400] INFO: 		Streaming
+[2026-04-23 14:46:20,400] INFO: 		Extended Pix Format
+[2026-04-23 14:46:20,400] INFO: Media Driver Info:
+[2026-04-23 14:46:20,400] INFO: 	Driver name      : uvcvideo
+[2026-04-23 14:46:20,400] INFO: 	Model            : 1080P USB Camera-A: 1080P USB C
+[2026-04-23 14:46:20,400] INFO: 	Serial           : 00000000_P050100_SN0002
+[2026-04-23 14:46:20,400] INFO: 	Bus info         : usb-3610000.usb-2.4.4
+[2026-04-23 14:46:20,400] INFO: 	Media version    : 5.15.0
+[2026-04-23 14:46:20,400] INFO: 	Hardware revision: 0x00003251 (12881)
+[2026-04-23 14:46:20,400] INFO: 	Driver version   : 5.15.0
+[2026-04-23 14:46:20,400] INFO: Interface Info:
+[2026-04-23 14:46:20,400] INFO: 	ID               : 0x03000002
+[2026-04-23 14:46:20,400] INFO: 	Type             : V4L Video
+[2026-04-23 14:46:20,400] INFO: Entity Info:
+[2026-04-23 14:46:20,400] INFO: 	ID               : 0x00000001 (1)
+[2026-04-23 14:46:20,400] INFO: 	Name             : 1080P USB Camera-A: 1080P USB C
+[2026-04-23 14:46:20,401] INFO: 	Function         : V4L2 I/O
+[2026-04-23 14:46:20,401] INFO: 	Flags            : default
+[2026-04-23 14:46:20,401] INFO: 	Pad 0x01000007   : 0: Sink
+[2026-04-23 14:46:20,401] INFO: 	  Link 0x02000010: from remote pad 0x100000a of entity 'Extension 3' (Video Pixel Formatter): Data, Enabled, Immutable
+[2026-04-23 14:46:20,401] INFO: Priority: 2
+[2026-04-23 14:46:20,401] INFO: Video input : 0 (Input 1: ok)
+[2026-04-23 14:46:20,401] INFO: Format Video Capture:
+[2026-04-23 14:46:20,401] INFO: 	Width/Height      : 1920/1080
+[2026-04-23 14:46:20,401] INFO: 	Pixel Format      : 'MJPG' (Motion-JPEG)
+[2026-04-23 14:46:20,401] INFO: 	Field             : None
+[2026-04-23 14:46:20,401] INFO: 	Bytes per Line    : 0
+[2026-04-23 14:46:20,401] INFO: 	Size Image        : 4147200
+[2026-04-23 14:46:20,401] INFO: 	Colorspace        : Default
+[2026-04-23 14:46:20,401] INFO: 	Transfer Function : Default (maps to Rec. 709)
+[2026-04-23 14:46:20,401] INFO: 	YCbCr/HSV Encoding: Default (maps to ITU-R 601)
+[2026-04-23 14:46:20,401] INFO: 	Quantization      : Default (maps to Full Range)
+[2026-04-23 14:46:20,401] INFO: 	Flags             : 
+[2026-04-23 14:46:20,401] INFO: Crop Capability Video Capture:
+[2026-04-23 14:46:20,401] INFO: 	Bounds      : Left 0, Top 0, Width 1920, Height 1080
+[2026-04-23 14:46:20,401] INFO: 	Default     : Left 0, Top 0, Width 1920, Height 1080
+[2026-04-23 14:46:20,401] INFO: 	Pixel Aspect: 1/1
+[2026-04-23 14:46:20,401] INFO: Selection Video Capture: crop_default, Left 0, Top 0, Width 1920, Height 1080, Flags: 
+[2026-04-23 14:46:20,402] INFO: Selection Video Capture: crop_bounds, Left 0, Top 0, Width 1920, Height 1080, Flags: 
+[2026-04-23 14:46:20,402] INFO: Streaming Parameters Video Capture:
+[2026-04-23 14:46:20,402] INFO: 	Capabilities     : timeperframe
+[2026-04-23 14:46:20,402] INFO: 	Frames per second: 30.000 (30/1)
+[2026-04-23 14:46:20,402] INFO: 	Read buffers     : 0
+[2026-04-23 14:46:20,402] INFO: 
+[2026-04-23 14:46:20,402] INFO: User Controls
+[2026-04-23 14:46:20,402] INFO: 
+[2026-04-23 14:46:20,402] INFO:                      brightness 0x00980900 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:46:20,402] INFO:                        contrast 0x00980901 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:46:20,402] INFO:                      saturation 0x00980902 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:46:20,402] INFO:         white_balance_automatic 0x0098090c (bool)   : default=1 value=1
+[2026-04-23 14:46:20,402] INFO:                            gain 0x00980913 (int)    : min=0 max=255 step=1 default=255 value=255
+[2026-04-23 14:46:20,402] INFO:       white_balance_temperature 0x0098091a (int)    : min=2700 max=7500 step=1 default=5100 value=5100 flags=inactive
+[2026-04-23 14:46:20,402] INFO:                       sharpness 0x0098091b (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:46:20,402] INFO:          backlight_compensation 0x0098091c (int)    : min=0 max=1 step=1 default=1 value=1
+[2026-04-23 14:46:20,402] INFO: 
+[2026-04-23 14:46:20,402] INFO: Camera Controls
+[2026-04-23 14:46:20,402] INFO: 
+[2026-04-23 14:46:20,402] INFO:                   auto_exposure 0x009a0901 (menu)   : min=0 max=3 default=0 value=0 (Auto Mode)
+[2026-04-23 14:46:20,402] INFO: 				0: Auto Mode
+[2026-04-23 14:46:20,402] INFO: 				1: Manual Mode
+[2026-04-23 14:46:20,402] INFO: 				2: Shutter Priority Mode
+[2026-04-23 14:46:20,403] INFO: 				3: Aperture Priority Mode
+[2026-04-23 14:46:20,403] INFO:          exposure_time_absolute 0x009a0902 (int)    : min=5 max=2500 step=1 default=2500 value=2500 flags=inactive
+[2026-04-23 14:46:20,403] INFO:      exposure_dynamic_framerate 0x009a0903 (bool)   : default=0 value=0
+[2026-04-23 14:46:20,403] INFO:                   zoom_absolute 0x009a090d (int)    : min=0 max=200 step=1 default=0 value=0
+[2026-04-23 14:46:20,403] INFO: ===== v4l2-ctl --get-fmt-video =====
+[2026-04-23 14:46:20,403] INFO: Format Video Capture:
+[2026-04-23 14:46:20,403] INFO: 	Width/Height      : 1920/1080
+[2026-04-23 14:46:20,403] INFO: 	Pixel Format      : 'MJPG' (Motion-JPEG)
+[2026-04-23 14:46:20,403] INFO: 	Field             : None
+[2026-04-23 14:46:20,403] INFO: 	Bytes per Line    : 0
+[2026-04-23 14:46:20,403] INFO: 	Size Image        : 4147200
+[2026-04-23 14:46:20,403] INFO: 	Colorspace        : Default
+[2026-04-23 14:46:20,403] INFO: 	Transfer Function : Default (maps to Rec. 709)
+[2026-04-23 14:46:20,403] INFO: 	YCbCr/HSV Encoding: Default (maps to ITU-R 601)
+[2026-04-23 14:46:20,403] INFO: 	Quantization      : Default (maps to Full Range)
+[2026-04-23 14:46:20,403] INFO: 	Flags             : 
+[2026-04-23 14:46:20,403] INFO: ===== v4l2-ctl --list-ctrls =====
+[2026-04-23 14:46:20,403] INFO: 
+[2026-04-23 14:46:20,403] INFO: User Controls
+[2026-04-23 14:46:20,403] INFO: 
+[2026-04-23 14:46:20,403] INFO:                      brightness 0x00980900 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:46:20,403] INFO:                        contrast 0x00980901 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:46:20,404] INFO:                      saturation 0x00980902 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:46:20,404] INFO:         white_balance_automatic 0x0098090c (bool)   : default=1 value=1
+[2026-04-23 14:46:20,404] INFO:                            gain 0x00980913 (int)    : min=0 max=255 step=1 default=255 value=255
+[2026-04-23 14:46:20,404] INFO:       white_balance_temperature 0x0098091a (int)    : min=2700 max=7500 step=1 default=5100 value=5100 flags=inactive
+[2026-04-23 14:46:20,404] INFO:                       sharpness 0x0098091b (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-04-23 14:46:20,404] INFO:          backlight_compensation 0x0098091c (int)    : min=0 max=1 step=1 default=1 value=1
+[2026-04-23 14:46:20,404] INFO: 
+[2026-04-23 14:46:20,404] INFO: Camera Controls
+[2026-04-23 14:46:20,404] INFO: 
+[2026-04-23 14:46:20,404] INFO:                   auto_exposure 0x009a0901 (menu)   : min=0 max=3 default=0 value=0 (Auto Mode)
+[2026-04-23 14:46:20,404] INFO:          exposure_time_absolute 0x009a0902 (int)    : min=5 max=2500 step=1 default=2500 value=2500 flags=inactive
+[2026-04-23 14:46:20,404] INFO:      exposure_dynamic_framerate 0x009a0903 (bool)   : default=0 value=0
+[2026-04-23 14:46:20,404] INFO:                   zoom_absolute 0x009a090d (int)    : min=0 max=200 step=1 default=0 value=0
+[2026-04-23 14:46:46,428] INFO: 用户选择退出。
+[2026-04-23 14:46:46,428] INFO: 关闭相机与资源。
+[2026-04-23 14:46:46,433] INFO: === Session Summary ===
+[2026-04-23 14:46:46,433] INFO: {
+  "session_id": "20260423_144351",
+  "device": "/dev/video0",
+  "start_time": "2026-04-23 14:43:51",
+  "end_time": "2026-04-23 14:46:46",
+  "operations": [
+    "apply_v4l2_controls",
+    "video_mode",
+    "record_manual_start",
+    "record_manual_stop",
+    "print_recent_logs",
+    "print_recent_logs",
+    "print_current_props",
+    "print_and_log_all_params"
+  ],
+  "saved_images": [],
+  "saved_videos": [
+    "camera_outputs/session_20260423_144351/videos/video_20260423_144507.mp4"
+  ],
+  "test_result": null,
+  "config_history": [
+    {
+      "time": "2026-04-23 14:44:22",
+      "requested": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "pixfmt": "MJPG"
+      },
+      "actual": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 30.0,
+        "fourcc": "MJPG"
+      },
+      "applied_ctrls": {
+        "auto_exposure": 0
+      }
+    }
+  ]
+}
+[2026-04-23 14:46:46,433] INFO: 已保存 session_summary.json 到: camera_outputs/session_20260423_144351

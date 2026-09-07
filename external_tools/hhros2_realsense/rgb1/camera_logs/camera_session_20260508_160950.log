@@ -1,0 +1,110 @@
+[2026-05-08 16:09:50,426] INFO: Log file: camera_logs/camera_session_20260508_160950.log
+[2026-05-08 16:09:50,427] INFO: 准备打开摄像头: /dev/video0
+[2026-05-08 16:09:50,427] INFO: 请求参数: {'width': 640, 'height': 360, 'fps': 30, 'pixfmt': 'MJPG'}, fourcc=MJPG
+[2026-05-08 16:09:52,577] INFO: 未调整控制参数：使用默认模式（保持当前控制值不变）
+[2026-05-08 16:09:52,752] INFO: 实际参数: {'width': 640, 'height': 360, 'fps': 30.0, 'fourcc': 'MJPG'}
+[2026-05-08 16:09:52,757] INFO: ===== v4l2-ctl --list-ctrls (snapshot) =====
+[2026-05-08 16:09:52,757] INFO: 
+[2026-05-08 16:09:52,758] INFO: User Controls
+[2026-05-08 16:09:52,758] INFO: 
+[2026-05-08 16:09:52,758] INFO:                      brightness 0x00980900 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:09:52,758] INFO:                        contrast 0x00980901 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:09:52,758] INFO:                      saturation 0x00980902 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:09:52,758] INFO:         white_balance_automatic 0x0098090c (bool)   : default=1 value=1
+[2026-05-08 16:09:52,758] INFO:                            gain 0x00980913 (int)    : min=0 max=255 step=1 default=255 value=255
+[2026-05-08 16:09:52,758] INFO:       white_balance_temperature 0x0098091a (int)    : min=2700 max=7500 step=1 default=5100 value=5100 flags=inactive
+[2026-05-08 16:09:52,758] INFO:                       sharpness 0x0098091b (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:09:52,758] INFO:          backlight_compensation 0x0098091c (int)    : min=0 max=1 step=1 default=1 value=1
+[2026-05-08 16:09:52,758] INFO: 
+[2026-05-08 16:09:52,758] INFO: Camera Controls
+[2026-05-08 16:09:52,758] INFO: 
+[2026-05-08 16:09:52,758] INFO:                   auto_exposure 0x009a0901 (menu)   : min=0 max=3 default=0 value=0 (Auto Mode)
+[2026-05-08 16:09:52,758] INFO:          exposure_time_absolute 0x009a0902 (int)    : min=5 max=2500 step=1 default=2500 value=2500 flags=inactive
+[2026-05-08 16:09:52,758] INFO:      exposure_dynamic_framerate 0x009a0903 (bool)   : default=0 value=0
+[2026-05-08 16:09:52,759] INFO:                   zoom_absolute 0x009a090d (int)    : min=0 max=200 step=1 default=0 value=0
+[2026-05-08 16:10:14,774] INFO: 进入【拍照模式】按键：s=保存  b=返回主菜单  q=退出程序
+[2026-05-08 16:10:14,774] INFO: 提示：窗口按键需要点击窗口获得焦点；终端输入需要回车。
+[2026-05-08 16:11:28,115] INFO: 保存图片: camera_outputs/session_20260508_160950/photos/photo_20260508_161128.jpg
+[2026-05-08 16:11:31,315] INFO: 保存图片: camera_outputs/session_20260508_160950/photos/photo_20260508_161131.jpg
+[2026-05-08 16:11:40,274] INFO: 保存图片: camera_outputs/session_20260508_160950/photos/photo_20260508_161140.jpg
+[2026-05-08 16:11:40,721] INFO: 保存图片: camera_outputs/session_20260508_160950/photos/photo_20260508_161140.jpg
+[2026-05-08 16:12:28,397] INFO: 当前相机参数(OpenCV): {'width': 640, 'height': 360, 'fps': 30.0, 'fourcc': 'MJPG'}
+[2026-05-08 16:12:39,196] INFO: 执行：重新配置相机（选择分辨率/帧率并重开）
+[2026-05-08 16:12:42,947] INFO: 重新配置 requested: {'width': 1920, 'height': 1080, 'fps': 5, 'pixfmt': 'YUYV'}, fourcc=YUYV
+[2026-05-08 16:12:44,867] INFO: 未调整控制参数：使用默认模式（保持当前控制值不变）
+[2026-05-08 16:12:45,036] INFO: 实际参数: {'width': 1920, 'height': 1080, 'fps': 5.0, 'fourcc': 'YUYV'}
+[2026-05-08 16:12:45,042] INFO: ===== v4l2-ctl --list-ctrls (snapshot) =====
+[2026-05-08 16:12:45,042] INFO: 
+[2026-05-08 16:12:45,042] INFO: User Controls
+[2026-05-08 16:12:45,042] INFO: 
+[2026-05-08 16:12:45,042] INFO:                      brightness 0x00980900 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:12:45,042] INFO:                        contrast 0x00980901 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:12:45,042] INFO:                      saturation 0x00980902 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:12:45,042] INFO:         white_balance_automatic 0x0098090c (bool)   : default=1 value=1
+[2026-05-08 16:12:45,042] INFO:                            gain 0x00980913 (int)    : min=0 max=255 step=1 default=255 value=255
+[2026-05-08 16:12:45,042] INFO:       white_balance_temperature 0x0098091a (int)    : min=2700 max=7500 step=1 default=5100 value=5100 flags=inactive
+[2026-05-08 16:12:45,042] INFO:                       sharpness 0x0098091b (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:12:45,042] INFO:          backlight_compensation 0x0098091c (int)    : min=0 max=1 step=1 default=1 value=1
+[2026-05-08 16:12:45,042] INFO: 
+[2026-05-08 16:12:45,043] INFO: Camera Controls
+[2026-05-08 16:12:45,043] INFO: 
+[2026-05-08 16:12:45,043] INFO:                   auto_exposure 0x009a0901 (menu)   : min=0 max=3 default=0 value=0 (Auto Mode)
+[2026-05-08 16:12:45,043] INFO:          exposure_time_absolute 0x009a0902 (int)    : min=5 max=2500 step=1 default=2500 value=2500 flags=inactive
+[2026-05-08 16:12:45,043] INFO:      exposure_dynamic_framerate 0x009a0903 (bool)   : default=0 value=0
+[2026-05-08 16:12:45,043] INFO:                   zoom_absolute 0x009a090d (int)    : min=0 max=200 step=1 default=0 value=0
+[2026-05-08 16:13:10,224] INFO: 用户选择退出。
+[2026-05-08 16:13:10,225] INFO: 关闭相机与资源。
+[2026-05-08 16:13:10,226] INFO: === Session Summary ===
+[2026-05-08 16:13:10,227] INFO: {
+  "session_id": "20260508_160950",
+  "device": "/dev/video0",
+  "start_time": "2026-05-08 16:09:50",
+  "end_time": "2026-05-08 16:13:10",
+  "operations": [
+    "photo_mode",
+    "print_recent_logs",
+    "print_current_props",
+    "reconfigure_camera"
+  ],
+  "saved_images": [
+    "camera_outputs/session_20260508_160950/photos/photo_20260508_161128.jpg",
+    "camera_outputs/session_20260508_160950/photos/photo_20260508_161131.jpg",
+    "camera_outputs/session_20260508_160950/photos/photo_20260508_161140.jpg",
+    "camera_outputs/session_20260508_160950/photos/photo_20260508_161140.jpg"
+  ],
+  "saved_videos": [],
+  "test_result": null,
+  "config_history": [
+    {
+      "time": "2026-05-08 16:09:52",
+      "requested": {
+        "width": 640,
+        "height": 360,
+        "fps": 30,
+        "pixfmt": "MJPG"
+      },
+      "actual": {
+        "width": 640,
+        "height": 360,
+        "fps": 30.0,
+        "fourcc": "MJPG"
+      }
+    },
+    {
+      "time": "2026-05-08 16:12:45",
+      "requested": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 5,
+        "pixfmt": "YUYV"
+      },
+      "actual": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 5.0,
+        "fourcc": "YUYV"
+      }
+    }
+  ]
+}
+[2026-05-08 16:13:10,227] INFO: 已保存 session_summary.json 到: camera_outputs/session_20260508_160950

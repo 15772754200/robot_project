@@ -1,0 +1,41 @@
+# ros2_control configuration for the Yidong humanoid motion-control layer.       # tmny edit
+# The controller_manager update() runs at 500 Hz; this is the deterministic      # tmny edit
+# inner loop that exchanges data with the HAL via C++ pointers, with no DDS hop.  # tmny edit
+controller_manager:
+  ros__parameters:
+    update_rate: 500  # Hz
+
+    joint_state_broadcaster:
+      type: hhros2_controllers/PlatformJointStateBroadcaster
+
+    imu_sensor_broadcaster:
+      type: hhros2_controllers/PlatformImuBroadcaster
+
+    humanoid_base_controller:
+      type: hhros2_controllers/HumanoidBaseController
+
+    damping_controller:
+      type: hhros2_controllers/DampingController
+
+joint_state_broadcaster:
+  ros__parameters:
+    interfaces:
+      - position
+      - velocity
+      - effort
+
+imu_sensor_broadcaster:
+  ros__parameters:
+    sensor_name: base_imu
+    frame_id: imu_link
+
+humanoid_base_controller:
+  ros__parameters:
+    # RL targets already arrive at the policy's 50 Hz control period. An
+    # additional low-pass filter changes the trained closed-loop dynamics and
+    # suppresses the alternating foot targets needed for locomotion.
+    smoothing_tau: 0.0
+
+damping_controller:
+  ros__parameters:
+    damping_kd: 2.0

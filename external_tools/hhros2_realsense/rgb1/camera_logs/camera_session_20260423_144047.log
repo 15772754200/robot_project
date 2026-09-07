@@ -1,0 +1,27 @@
+[2026-04-23 14:40:47,262] INFO: Log file: camera_logs/camera_session_20260423_144047.log
+[2026-04-23 14:40:47,263] INFO: 准备打开摄像头: /dev/video1
+[2026-04-23 14:40:47,263] INFO: 请求参数: {'width': 1920, 'height': 1080, 'fps': 30, 'pixfmt': 'MJPG'}, fourcc=MJPG
+[2026-04-23 14:40:48,917] INFO: 未调整控制参数：使用默认模式（保持当前控制值不变）
+[2026-04-23 14:40:48,918] ERROR: 发生异常: 无法打开摄像头: /dev/video1
+Traceback (most recent call last):
+  File "/home/niic/zgj_test/robotZY(1)/robotZY/rgb1/RGB_sys.py", line 1068, in main
+    cap, actual, applied_ctrls = open_and_maybe_apply_ctrls(
+  File "/home/niic/zgj_test/robotZY(1)/robotZY/rgb1/RGB_sys.py", line 972, in open_and_maybe_apply_ctrls
+    cap, actual = open_camera(device, requested["width"], requested["height"], requested["fps"], fourcc=fourcc)
+  File "/home/niic/zgj_test/robotZY(1)/robotZY/rgb1/RGB_sys.py", line 602, in open_camera
+    raise RuntimeError(f"无法打开摄像头: {device}")
+RuntimeError: 无法打开摄像头: /dev/video1
+[2026-04-23 14:40:48,919] INFO: 关闭相机与资源。
+[2026-04-23 14:40:48,920] INFO: === Session Summary ===
+[2026-04-23 14:40:48,920] INFO: {
+  "session_id": "20260423_144047",
+  "device": "/dev/video1",
+  "start_time": "2026-04-23 14:40:47",
+  "end_time": "2026-04-23 14:40:48",
+  "operations": [],
+  "saved_images": [],
+  "saved_videos": [],
+  "test_result": null,
+  "config_history": []
+}
+[2026-04-23 14:40:48,920] INFO: 已保存 session_summary.json 到: camera_outputs/session_20260423_144047

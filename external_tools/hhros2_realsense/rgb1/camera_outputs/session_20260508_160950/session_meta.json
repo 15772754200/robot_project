@@ -1,0 +1,37 @@
+{
+  "session_id": "20260508_160950",
+  "device": "/dev/video0",
+  "start_time": "2026-05-08 16:09:50",
+  "config_history": [
+    {
+      "time": "2026-05-08 16:09:52",
+      "requested": {
+        "width": 640,
+        "height": 360,
+        "fps": 30,
+        "pixfmt": "MJPG"
+      },
+      "actual": {
+        "width": 640,
+        "height": 360,
+        "fps": 30.0,
+        "fourcc": "MJPG"
+      }
+    },
+    {
+      "time": "2026-05-08 16:12:45",
+      "requested": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 5,
+        "pixfmt": "YUYV"
+      },
+      "actual": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 5.0,
+        "fourcc": "YUYV"
+      }
+    }
+  ]
+}

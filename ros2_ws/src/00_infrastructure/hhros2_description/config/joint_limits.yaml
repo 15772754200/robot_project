@@ -1,0 +1,24 @@
+joint_limits:
+  left_hip_pitch_joint: {has_position_limits: true, min_position: -2.618, max_position: 2.618}
+  left_hip_roll_joint: {has_position_limits: true, min_position: -0.1746, max_position: 1.0472}
+  left_hip_yaw_joint: {has_position_limits: true, min_position: -2.3562, max_position: 0.0873}
+  left_knee_joint: {has_position_limits: true, min_position: -1.4835, max_position: 0.0873}
+  left_ankle_pitch_joint: {has_position_limits: true, min_position: -0.7854, max_position: 0.7854}
+  left_ankle_roll_joint: {has_position_limits: true, min_position: -0.7854, max_position: 0.7854}
+  right_hip_pitch_joint: {has_position_limits: true, min_position: -2.618, max_position: 2.618}
+  right_hip_roll_joint: {has_position_limits: true, min_position: -1.0472, max_position: 0.1746}
+  right_hip_yaw_joint: {has_position_limits: true, min_position: -0.0873, max_position: 2.3562}
+  right_knee_joint: {has_position_limits: true, min_position: -0.0873, max_position: 1.4875}
+  right_ankle_pitch_joint: {has_position_limits: true, min_position: -0.7854, max_position: 0.7854}
+  right_ankle_roll_joint: {has_position_limits: true, min_position: -0.7854, max_position: 0.7854}
+  waist_yaw_joint: {has_position_limits: true, min_position: -2.618, max_position: 2.618}
+  waist_pitch_joint: {has_position_limits: true, min_position: -0.524, max_position: 0.524}
+  head_yaw_joint: {has_position_limits: true, min_position: -0.524, max_position: 0.524}
+  left_shoulder_pitch_joint: {has_position_limits: true, min_position: -2.8798, max_position: 2.3562}
+  left_shoulder_roll_joint: {has_position_limits: true, min_position: -1.4486, max_position: 1.5708}
+  left_shoulder_yaw_joint: {has_position_limits: true, min_position: -3.1416, max_position: 3.1416}
+  left_elbow_joint: {has_position_limits: true, min_position: -0.8727, max_position: 2.3562}
+  right_shoulder_pitch_joint: {has_position_limits: true, min_position: -2.3562, max_position: 2.8798}
+  right_shoulder_roll_joint: {has_position_limits: true, min_position: -1.5708, max_position: 1.4486}
+  right_shoulder_yaw_joint: {has_position_limits: true, min_position: -3.1416, max_position: 3.1416}
+  right_elbow_joint: {has_position_limits: true, min_position: -2.3562, max_position: 0.8727}

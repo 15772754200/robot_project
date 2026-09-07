@@ -1,0 +1,22 @@
+{
+  "session_id": "20260508_161352",
+  "device": "/dev/video0",
+  "start_time": "2026-05-08 16:13:52",
+  "config_history": [
+    {
+      "time": "2026-05-08 16:13:55",
+      "requested": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "pixfmt": "MJPG"
+      },
+      "actual": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30.0,
+        "fourcc": "MJPG"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+ankle_parallel_sweep_probe:
+  ros__parameters:
+    command_topic: /humanoid_base_controller/reference
+    feedback_topic: /joint_states
+    enable_topic: /motor_control_enable
+
+    # Exactly one side is allowed: left or right.
+    side: left
+    axis: roll
+
+    # Keep false for dry-run verification. Set true only after the robot is
+    # secured and no other node publishes to the command topic.
+    armed: false
+    send_enable: false
+
+    # Targets are virtual ankle pitch/roll joints. EcatL0Backend performs the
+    # inverse mapping to the two physical ankle motors and forward mapping on
+    # feedback. The other 21 command slots are sent as NaN, so the base
+    # controller keeps its previously applied commands for those joints.
+    amplitude_rad: 0.05
+    frequency_hz: 0.1
+    ramp_time_sec: 3.0
+    duration_sec: 10.0
+    command_period_ms: 5.0
+
+    kp: 25.0
+    kd: 2.0
+    joint_limit_rad: 0.70
+    max_tracking_error_rad: 0.03
+    feedback_timeout_sec: 0.1
+    csv_path: /tmp/ankle_parallel_sweep_probe.csv

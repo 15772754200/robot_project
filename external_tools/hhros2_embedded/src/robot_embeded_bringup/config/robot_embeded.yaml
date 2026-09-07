@@ -1,0 +1,69 @@
+robot_embeded_spi_node:
+  ros__parameters:
+    spi:
+      device: "/dev/spidev0.0"
+      mode: 0
+      speed_hz: 1000000
+      bits_per_word: 8
+      lsb_first: 0
+      verify: true
+
+    logs:
+      directory: "/var/log/robot_embeded"
+
+robot_embeded_usb_node:
+  ros__parameters:
+    usb:
+      subsystem: ""
+      devnode_prefix: ""
+      include_without_devnode: true
+      read_devnode: ""
+      read_max_bytes: 256
+      read_timeout_ms: 100
+
+    usb_serial:
+      device: "/dev/ttyUSB0"
+      baudrate: 115200
+      databits: 8
+      parity: "none"
+      stopbits: 1
+      rtscts: false
+      verify: true
+
+    usb_video:
+      device: "/dev/video0"
+      width: 640
+      height: 480
+      pixfmt: "YUYV"
+      fps: 30
+      verify: true
+
+    logs:
+      directory: "/var/log/robot_embeded"
+
+robot_embeded_bms_node:
+  ros__parameters:
+    bms:
+      device: "/dev/ttyTHS0"
+      baudrate: 9600
+      response_timeout_ms: 1500
+      rs485_tx_value: 0
+      rs485_rx_value: 1
+      poll_interval_ms: 1000
+      publish_enabled: false
+
+    logs:
+      directory: "/var/log/robot_embeded"
+
+robot_embeded_power_node:
+  ros__parameters:
+    power:
+      device: "/dev/ttyTHS2"
+      baudrate: 115200
+      response_timeout_ms: 1500
+      rs485_tx_value: 0
+      rs485_rx_value: 1
+      rs485_id: 1
+
+    logs:
+      directory: "/var/log/robot_embeded"

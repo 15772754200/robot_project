@@ -1,0 +1,20 @@
+# Centralized control-mode arbitration request handled by hhros2_core.
+# Callers (behavior layer, teleop, diagnostics) propose a mode and a priority;
+# the arbiter grants or rejects based on the current safety level and the
+# priority of the currently-latched owner.
+#
+# Higher priority wins. Safety reflex (damping) uses PRIORITY_SAFETY and cannot
+# be preempted by lower-priority requesters.
+int32 PRIORITY_BEHAVIOR=10
+int32 PRIORITY_TELEOP=50
+int32 PRIORITY_OPERATOR=80
+int32 PRIORITY_SAFETY=100
+
+int32 requested_mode
+int32 priority
+string requester
+---
+bool granted
+int32 active_mode
+string active_controller
+string message

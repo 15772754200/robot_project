@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>hhros2_motor_runtime</name>
+  <version>0.1.0</version>
+  <description>NIIC three-master Ti5/Encos EtherCAT runtime packaged as a ROS 2 dependency.</description>
+  <maintainer email="robotics@example.com">robot_platform maintainers</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>ament_index_cpp</depend>
+  <depend>hhros2_motor_protocol</depend>
+  <depend>hhros2_motor_diagnostics</depend>
+  <depend>boost</depend>
+  <depend>spdlog</depend>
+  <depend>hhros2_log</depend>
+  <depend>hhros2_mechanisms</depend>
+  <depend>eigen3</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

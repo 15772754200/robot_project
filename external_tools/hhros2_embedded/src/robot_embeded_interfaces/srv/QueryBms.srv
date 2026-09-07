@@ -1,0 +1,9 @@
+bool use_parameter_defaults
+string device
+int32 baudrate
+int32 response_timeout_ms
+---
+bool ok
+int32 code
+string message
+robot_embeded_interfaces/BmsState state

@@ -1,0 +1,54 @@
+single_shot_motor_probe:
+  ros__parameters:
+    command_topic: /humanoid_base_controller/reference
+    feedback_topic: /joint_states
+    shm_name: hhros2_motor_shm
+    enable_topic: /motor_control_enable
+
+    # 数组下标从 0 开始：6 表示第 7 个命令槽位。
+    command_index: 0
+    platform_index: 0
+    master_index: 0
+    motor_index: 0
+
+    # 目标电机阶跃：target = 当前反馈 baseline + position_step_rad。
+    position_step_rad: 0.005
+    step_count: 1
+    kp: 10.0
+    kd: 1.0
+    velocity: 0.0
+    effort: 0.0
+
+    # 非目标电机前保持位置；kp/kd 由下面两个 23 长度数组逐轴给出。
+    non_target_position_rad: 0.0
+    # true 时，非目标电机 command position 也会在阶跃后变为
+    # non_target_position_rad + all_joint_step_rad，方便 rosbag/PlotJuggler
+    # 看到所有 position[0..22] 的完整阶跃命令。
+    step_all_command_positions: false
+    all_joint_step_rad: 0.05
+
+    command_kp_values: [
+      150.0, 80.0, 80.0, 150.0, 25.0, 25.0,
+      150.0, 80.0, 80.0, 150.0, 25.0, 25.0,
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+      0.0, 0.0, 0.0, 0.0, 0.0
+    ]
+    command_kd_values: [
+      16.0, 5.0, 3.0, 16.0, 2.0, 2.0,
+      16.0, 5.0, 3.0, 16.0, 2.0, 2.0,
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+      0.0, 0.0, 0.0, 0.0, 0.0
+    ]
+
+    # 只用位置阈值判断“ROS 层看到动作”，避免速度噪声提前触发。
+    motion_threshold_rad: 0.0005
+    velocity_threshold_rad_s: 999.0
+
+    baseline_timeout_sec: 3.0
+    result_timeout_sec: 5.0
+    pre_step_hold_sec: 2.0
+    post_step_hold_sec: 1.0
+    command_publish_period_ms: 5.0
+    send_enable: false
+
+    csv_path: /tmp/single_shot_motor_probe.csv

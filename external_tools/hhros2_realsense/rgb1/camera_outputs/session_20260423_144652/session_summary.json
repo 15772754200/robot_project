@@ -1,0 +1,38 @@
+{
+  "session_id": "20260423_144652",
+  "device": "/dev/video0",
+  "start_time": "2026-04-23 14:46:52",
+  "end_time": "2026-04-23 14:47:40",
+  "operations": [
+    "stream_test",
+    "stream_test",
+    "video_mode",
+    "print_recent_logs"
+  ],
+  "saved_images": [],
+  "saved_videos": [],
+  "test_result": {
+    "read_ok_frames": 60,
+    "read_fail_frames": 0,
+    "duration_s": 1.9986679553985596,
+    "est_fps": 30.019993985461806,
+    "first_frame_latency_s": 0.040346384048461914
+  },
+  "config_history": [
+    {
+      "time": "2026-04-23 14:46:54",
+      "requested": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "pixfmt": "MJPG"
+      },
+      "actual": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 30.0,
+        "fourcc": "MJPG"
+      }
+    }
+  ]
+}

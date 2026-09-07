@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+  Top-level description for the Yidong humanoid. This is the SINGLE source of
+  truth shared by real hardware and simulation. Sim-to-Real is achieved by only
+  changing the `hardware` argument; the body, joints and ros2_control resource
+  set are identical.
+
+  Example:
+    xacro yidong.urdf.xacro hardware:=real
+    xacro yidong.urdf.xacro hardware:=mujoco
+    xacro yidong.urdf.xacro hardware:=mock
+-->
+<robot name="yidong" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- real | mujoco | mock -->
+  <xacro:arg name="hardware" default="mock"/>
+  <xacro:arg name="exipc_port" default="1"/>
+  <xacro:arg name="shm_name" default="hhros2_motor_shm"/>
+  <xacro:arg name="qos_config" default=""/>
+  <!-- MuJoCo scene used when hardware:=mujoco (e.g. scene_stair.xml). -->
+  <xacro:arg name="mujoco_model"
+      default="package://hhros2_description/models/Yidong/mjcf/scene_safety_rope.xml"/>
+
+  <xacro:include filename="$(find hhros2_description)/urdf/yidong.body.xacro"/>
+  <xacro:include filename="$(find hhros2_description)/urdf/yidong.ros2_control.xacro"/>
+
+  <xacro:yidong_body/>
+
+  <xacro:yidong_ros2_control
+      name="yidong_system"
+      hardware="$(arg hardware)"
+      exipc_port="$(arg exipc_port)"
+      shm_name="$(arg shm_name)"
+      qos_config="$(arg qos_config)"
+      mujoco_model="$(arg mujoco_model)"/>
+
+</robot>

@@ -1,0 +1,14 @@
+bool use_parameter_defaults
+string device
+int32 baudrate
+int32 response_timeout_ms
+uint8 rs485_id
+string command
+---
+bool success
+uint8 command_code
+uint8 result
+string message
+uint8[] request_frame
+uint8[] raw_frame
+int32 code

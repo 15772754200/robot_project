@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--
+    Bring-up kinematic stand-in for the 23 actuated DoF.
+
+    NOTE: This is a structurally-valid placeholder so the full ros2_control
+    pipeline (controller_manager, broadcasters, controllers, estimator) can be
+    launched and exercised before the detailed mesh tree is migrated from
+    robot_deploy_sim/models/Yidong. Replace the per-joint child links with the
+    real link geometry/inertia during the migration; joint NAMES and ORDER must
+    stay identical to keep the L0 MotorPacket mapping valid.
+  -->
+
+  <link name="base_link"/>
+
+  <!-- Floating base placeholder: world->base is owned by the estimator at
+       runtime (published on /robot/state_estimate), not a fixed joint here. -->
+
+  <xacro:macro name="dof"
+               params="name lower:=-3.14 upper:=3.14 effort:=200.0 velocity:=20.0 axis:='0 0 1'">
+    <link name="${name}_link">
+      <inertial>
+        <mass value="0.5"/>
+        <origin xyz="0 0 0"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+      </inertial>
+    </link>
+    <joint name="${name}" type="revolute">
+      <parent link="base_link"/>
+      <child link="${name}_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="${axis}"/>
+      <limit lower="${lower}" upper="${upper}" effort="${effort}" velocity="${velocity}"/>
+    </joint>
+  </xacro:macro>
+
+  <!-- Legs (ENCOS high-torque actuators) -->
+  <xacro:dof name="left_hip_pitch_joint"  effort="300.0"/>
+  <xacro:dof name="left_hip_roll_joint"   effort="200.0"/>
+  <xacro:dof name="left_hip_yaw_joint"    effort="200.0"/>
+  <xacro:dof name="left_knee_joint"       effort="300.0"/>
+  <xacro:dof name="left_ankle_pitch_joint"    effort="100.0"/>
+  <xacro:dof name="left_ankle_roll_joint"    effort="100.0"/>
+  <xacro:dof name="right_hip_pitch_joint" effort="300.0"/>
+  <xacro:dof name="right_hip_roll_joint"  effort="200.0"/>
+  <xacro:dof name="right_hip_yaw_joint"   effort="200.0"/>
+  <xacro:dof name="right_knee_joint"      effort="300.0"/>
+  <xacro:dof name="right_ankle_pitch_joint"   effort="100.0"/>
+  <xacro:dof name="right_ankle_roll_joint"   effort="100.0"/>
+
+  <!-- Waist + head + arms (TI5 actuators) -->
+  <xacro:dof name="waist_yaw_joint"           effort="120.0"/>
+  <xacro:dof name="waist_pitch_joint"         effort="120.0"/>
+  <xacro:dof name="head_yaw_joint"            effort="40.0"/>
+  <xacro:dof name="left_shoulder_pitch_joint" effort="80.0"/>
+  <xacro:dof name="left_shoulder_roll_joint"  effort="80.0"/>
+  <xacro:dof name="left_shoulder_yaw_joint"   effort="60.0"/>
+  <xacro:dof name="left_elbow_joint"          effort="60.0"/>
+  <xacro:dof name="right_shoulder_pitch_joint" effort="80.0"/>
+  <xacro:dof name="right_shoulder_roll_joint" effort="80.0"/>
+  <xacro:dof name="right_shoulder_yaw_joint"  effort="60.0"/>
+  <xacro:dof name="right_elbow_joint"         effort="60.0"/>
+
+</robot>

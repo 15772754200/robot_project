@@ -1,0 +1,67 @@
+[2026-05-08 16:24:09,223] INFO: Log file: camera_logs/camera_session_20260508_162409.log
+[2026-05-08 16:24:09,224] INFO: 准备打开摄像头: /dev/video0
+[2026-05-08 16:24:09,224] INFO: 请求参数: {'width': 1280, 'height': 960, 'fps': 30, 'pixfmt': 'MJPG'}, fourcc=MJPG
+[2026-05-08 16:24:10,943] INFO: 未调整控制参数：使用默认模式（保持当前控制值不变）
+[2026-05-08 16:24:11,119] INFO: 实际参数: {'width': 1280, 'height': 960, 'fps': 30.0, 'fourcc': 'MJPG'}
+[2026-05-08 16:24:11,125] INFO: ===== v4l2-ctl --list-ctrls (snapshot) =====
+[2026-05-08 16:24:11,125] INFO: 
+[2026-05-08 16:24:11,125] INFO: User Controls
+[2026-05-08 16:24:11,125] INFO: 
+[2026-05-08 16:24:11,125] INFO:                      brightness 0x00980900 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:24:11,125] INFO:                        contrast 0x00980901 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:24:11,125] INFO:                      saturation 0x00980902 (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:24:11,125] INFO:         white_balance_automatic 0x0098090c (bool)   : default=1 value=1
+[2026-05-08 16:24:11,126] INFO:                            gain 0x00980913 (int)    : min=0 max=255 step=1 default=255 value=255
+[2026-05-08 16:24:11,126] INFO:       white_balance_temperature 0x0098091a (int)    : min=2700 max=7500 step=1 default=5100 value=5100 flags=inactive
+[2026-05-08 16:24:11,126] INFO:                       sharpness 0x0098091b (int)    : min=0 max=100 step=1 default=50 value=50
+[2026-05-08 16:24:11,126] INFO:          backlight_compensation 0x0098091c (int)    : min=0 max=1 step=1 default=1 value=1
+[2026-05-08 16:24:11,126] INFO: 
+[2026-05-08 16:24:11,126] INFO: Camera Controls
+[2026-05-08 16:24:11,126] INFO: 
+[2026-05-08 16:24:11,126] INFO:                   auto_exposure 0x009a0901 (menu)   : min=0 max=3 default=0 value=0 (Auto Mode)
+[2026-05-08 16:24:11,126] INFO:          exposure_time_absolute 0x009a0902 (int)    : min=5 max=2500 step=1 default=2500 value=2500 flags=inactive
+[2026-05-08 16:24:11,126] INFO:      exposure_dynamic_framerate 0x009a0903 (bool)   : default=0 value=0
+[2026-05-08 16:24:11,126] INFO:                   zoom_absolute 0x009a090d (int)    : min=0 max=200 step=1 default=0 value=0
+[2026-05-08 16:24:16,050] INFO: 开始录制【定时】7.00s -> camera_outputs/session_20260508_162409/videos/video_20260508_162416.mp4
+[2026-05-08 16:24:23,062] INFO: 录制完成: camera_outputs/session_20260508_162409/videos/video_20260508_162416.mp4
+[2026-05-08 16:24:36,519] INFO: 开始录制【定时】6.00s -> camera_outputs/session_20260508_162409/videos/video_20260508_162436.mp4
+[2026-05-08 16:24:42,548] INFO: 录制完成: camera_outputs/session_20260508_162409/videos/video_20260508_162436.mp4
+[2026-05-08 16:24:50,478] INFO: 用户选择退出。
+[2026-05-08 16:24:50,479] INFO: 关闭相机与资源。
+[2026-05-08 16:24:50,483] INFO: === Session Summary ===
+[2026-05-08 16:24:50,484] INFO: {
+  "session_id": "20260508_162409",
+  "device": "/dev/video0",
+  "start_time": "2026-05-08 16:24:09",
+  "end_time": "2026-05-08 16:24:50",
+  "operations": [
+    "video_mode",
+    "record_timed_7.0s",
+    "video_mode",
+    "record_timed_6.0s"
+  ],
+  "saved_images": [],
+  "saved_videos": [
+    "camera_outputs/session_20260508_162409/videos/video_20260508_162416.mp4",
+    "camera_outputs/session_20260508_162409/videos/video_20260508_162436.mp4"
+  ],
+  "test_result": null,
+  "config_history": [
+    {
+      "time": "2026-05-08 16:24:11",
+      "requested": {
+        "width": 1280,
+        "height": 960,
+        "fps": 30,
+        "pixfmt": "MJPG"
+      },
+      "actual": {
+        "width": 1280,
+        "height": 960,
+        "fps": 30.0,
+        "fourcc": "MJPG"
+      }
+    }
+  ]
+}
+[2026-05-08 16:24:50,484] INFO: 已保存 session_summary.json 到: camera_outputs/session_20260508_162409

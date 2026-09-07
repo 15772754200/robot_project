@@ -1,0 +1,27 @@
+[2026-05-08 16:05:46,080] INFO: Log file: camera_logs/camera_session_20260508_160546.log
+[2026-05-08 16:05:46,080] INFO: 准备打开摄像头: /dev/video1
+[2026-05-08 16:05:46,080] INFO: 请求参数: {'width': 0, 'height': 1080, 'fps': 30, 'pixfmt': 'MJPG'}, fourcc=MJPG
+[2026-05-08 16:05:49,799] INFO: 未调整控制参数：使用默认模式（保持当前控制值不变）
+[2026-05-08 16:05:49,800] ERROR: 发生异常: 无法打开摄像头: /dev/video1
+Traceback (most recent call last):
+  File "/home/niic/robot_ros2_deploy_4_10_humanoid/src/realsense/rgb1/RGB_sys.py", line 1068, in main
+    cap, actual, applied_ctrls = open_and_maybe_apply_ctrls(
+  File "/home/niic/robot_ros2_deploy_4_10_humanoid/src/realsense/rgb1/RGB_sys.py", line 972, in open_and_maybe_apply_ctrls
+    cap, actual = open_camera(device, requested["width"], requested["height"], requested["fps"], fourcc=fourcc)
+  File "/home/niic/robot_ros2_deploy_4_10_humanoid/src/realsense/rgb1/RGB_sys.py", line 602, in open_camera
+    raise RuntimeError(f"无法打开摄像头: {device}")
+RuntimeError: 无法打开摄像头: /dev/video1
+[2026-05-08 16:05:49,801] INFO: 关闭相机与资源。
+[2026-05-08 16:05:49,802] INFO: === Session Summary ===
+[2026-05-08 16:05:49,802] INFO: {
+  "session_id": "20260508_160546",
+  "device": "/dev/video1",
+  "start_time": "2026-05-08 16:05:46",
+  "end_time": "2026-05-08 16:05:49",
+  "operations": [],
+  "saved_images": [],
+  "saved_videos": [],
+  "test_result": null,
+  "config_history": []
+}
+[2026-05-08 16:05:49,802] INFO: 已保存 session_summary.json 到: camera_outputs/session_20260508_160546

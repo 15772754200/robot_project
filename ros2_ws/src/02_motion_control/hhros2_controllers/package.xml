@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>hhros2_controllers</name>
+  <version>0.1.0</version>
+  <description>
+    Motion-control chained controllers (02_motion_control): the 500 Hz
+    humanoid_base_controller that interpolates upstream hybrid commands onto the
+    HAL command interfaces, and the damping_controller used as the safe-reflex
+    target by hhros2_core.
+  </description>
+  <maintainer email="robotics@example.com">robot_platform maintainers</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>controller_interface</depend>
+  <depend>hardware_interface</depend>
+  <depend>pluginlib</depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_lifecycle</depend>
+  <depend>realtime_tools</depend>
+  <depend>sensor_msgs</depend>
+  <depend>hhros2_interfaces</depend>
+  <depend>hhros2_motor_diagnostics</depend>
+  <depend>hhros2_log</depend>
+  
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <controller_interface plugin="${prefix}/hhros2_controllers_plugins.xml"/>
+  </export>
+</package>

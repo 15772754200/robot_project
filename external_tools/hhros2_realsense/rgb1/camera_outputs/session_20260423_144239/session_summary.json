@@ -1,0 +1,32 @@
+{
+  "session_id": "20260423_144239",
+  "device": "/dev/video0",
+  "start_time": "2026-04-23 14:42:39",
+  "end_time": "2026-04-23 14:43:43",
+  "operations": [
+    "photo_mode"
+  ],
+  "saved_images": [
+    "camera_outputs/session_20260423_144239/photos/photo_20260423_144326.jpg",
+    "camera_outputs/session_20260423_144239/photos/photo_20260423_144328.jpg"
+  ],
+  "saved_videos": [],
+  "test_result": null,
+  "config_history": [
+    {
+      "time": "2026-04-23 14:42:41",
+      "requested": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "pixfmt": "MJPG"
+      },
+      "actual": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 30.0,
+        "fourcc": "MJPG"
+      }
+    }
+  ]
+}

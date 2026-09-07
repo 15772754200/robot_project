@@ -1,0 +1,7 @@
+bool use_parameter_defaults
+string device
+---
+bool ok
+int32 code
+string message
+robot_embeded_interfaces/SpiDevice[] devices

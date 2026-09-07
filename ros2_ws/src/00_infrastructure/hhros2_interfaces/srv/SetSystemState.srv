@@ -1,0 +1,7 @@
+# Enable or disable the physical L0 actuator bus. This service is available on
+# every deployment but returns success=false when no real L0 channel exists.
+# Control-mode ownership is independent and uses SetControlMode.
+bool enable
+---
+bool success
+string message

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>hhros2_hal</name>
+  <version>0.1.0</version>
+  <description>
+    Hardware abstraction layer (01_hardware_bridge): a ros2_control SystemInterface
+    plugin that bridges the standardized command/state interfaces (position,
+    velocity, effort, kp, kd, plus IMU sensor) to the L0 real-time runtime over
+    lock-free shared memory. Keeps the EtherCAT 1-4 kHz loop fully isolated from
+    the ROS process.
+  </description>
+  <maintainer email="robotics@example.com">robot_platform maintainers</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>hardware_interface</depend>
+  <depend>pluginlib</depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_lifecycle</depend>
+  <depend>hhros2_motor_protocol</depend>
+  <depend>hhros2_motor_diagnostics</depend>
+  <depend>hhros2_log</depend>
+  
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <hardware_interface plugin="${prefix}/hhros2_hal_plugins.xml"/>
+  </export>
+</package>

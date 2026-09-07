@@ -1,0 +1,44 @@
+[2026-05-08 16:06:06,048] INFO: Log file: camera_logs/camera_session_20260508_160606.log
+[2026-05-08 16:06:06,048] INFO: 准备打开摄像头: /dev/video2
+[2026-05-08 16:06:06,048] INFO: 请求参数: {'width': 1280, 'height': 720, 'fps': 30, 'pixfmt': 'GREY'}, fourcc=None
+[2026-05-08 16:06:08,703] INFO: 未调整控制参数：使用默认模式（保持当前控制值不变）
+[2026-05-08 16:06:08,916] INFO: 实际参数: {'width': 1280, 'height': 720, 'fps': 30.0, 'fourcc': 'UYVY'}
+[2026-05-08 16:06:08,920] INFO: ===== v4l2-ctl --list-ctrls (snapshot) =====
+[2026-05-08 16:06:08,920] INFO: 
+[2026-05-08 16:06:08,921] INFO: User Controls
+[2026-05-08 16:06:08,921] INFO: 
+[2026-05-08 16:06:08,921] INFO:                            gain 0x00980913 (int)    : min=16 max=248 step=1 default=16 value=16
+[2026-05-08 16:06:32,519] INFO: 进入【拍照模式】按键：s=保存  b=返回主菜单  q=退出程序
+[2026-05-08 16:06:32,519] INFO: 提示：窗口按键需要点击窗口获得焦点；终端输入需要回车。
+[2026-05-08 16:06:56,687] INFO: 关闭相机与资源。
+[2026-05-08 16:06:56,692] INFO: === Session Summary ===
+[2026-05-08 16:06:56,692] INFO: {
+  "session_id": "20260508_160606",
+  "device": "/dev/video2",
+  "start_time": "2026-05-08 16:06:06",
+  "end_time": "2026-05-08 16:06:56",
+  "operations": [
+    "photo_mode"
+  ],
+  "saved_images": [],
+  "saved_videos": [],
+  "test_result": null,
+  "config_history": [
+    {
+      "time": "2026-05-08 16:06:08",
+      "requested": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "pixfmt": "GREY"
+      },
+      "actual": {
+        "width": 1280,
+        "height": 720,
+        "fps": 30.0,
+        "fourcc": "UYVY"
+      }
+    }
+  ]
+}
+[2026-05-08 16:06:56,692] INFO: 已保存 session_summary.json 到: camera_outputs/session_20260508_160606

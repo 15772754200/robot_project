@@ -1,0 +1,35 @@
+{
+  "session_id": "20260508_162409",
+  "device": "/dev/video0",
+  "start_time": "2026-05-08 16:24:09",
+  "end_time": "2026-05-08 16:24:50",
+  "operations": [
+    "video_mode",
+    "record_timed_7.0s",
+    "video_mode",
+    "record_timed_6.0s"
+  ],
+  "saved_images": [],
+  "saved_videos": [
+    "camera_outputs/session_20260508_162409/videos/video_20260508_162416.mp4",
+    "camera_outputs/session_20260508_162409/videos/video_20260508_162436.mp4"
+  ],
+  "test_result": null,
+  "config_history": [
+    {
+      "time": "2026-05-08 16:24:11",
+      "requested": {
+        "width": 1280,
+        "height": 960,
+        "fps": 30,
+        "pixfmt": "MJPG"
+      },
+      "actual": {
+        "width": 1280,
+        "height": 960,
+        "fps": 30.0,
+        "fourcc": "MJPG"
+      }
+    }
+  ]
+}
