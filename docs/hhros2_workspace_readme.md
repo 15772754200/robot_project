@@ -120,8 +120,20 @@ cd ros2_ws
 export Necro_DIR=/path/to/directory/containing/NecroConfig.cmake
 ./auto_build.sh real --jobs 1
 ```
-
-
+### 安装onnxruntime方法如下：
+```bash
+cd /tmp
+x86_64版本：
+wget https://github.com/microsoft/onnxruntime/releases/download/v1.27.0/onnxruntime-linux-x64-1.27.0.tgz
+aarch64版本：
+wget https://github.com/microsoft/onnxruntime/releases/download/v1.27.0/onnxruntime-linux-aarch64-1.27.0.tgz
+解压后放到external_tools/hhros2_thirdarty目录下
+```
+### 安装mujoco方法如下：
+```bash
+# 第一次部署时在/home/niic下创建mkdir .mujoco文件夹，然后 wget https://github.com/google-deepmind/mujoco/releases/download/3.3.7/mujoco-3.3.7-linux-aarch64.tar.gz
+# 最后将压缩包解压到.mujoco文件夹下，解压后文件夹名为mujoco-3.3.7
+```
 
 ## 3. 启动与验证
 

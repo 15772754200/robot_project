@@ -67,6 +67,20 @@ void install_terminal_restore_handlers() {
 }
 
 KeyBoard::KeyBoard():keymode_(KeyMode::KEY_F2), input_fd_(-1), robot_server(nullptr) {
+
+    // 参数初始化
+    axis_linear_x = 0.0f;
+    axis_linear_y = 0.0f;
+    axis_angular_z = 0.0f;
+    max_linear_x = 0.6f;
+    max_linear_y = 0.3f;
+    max_angular_z = 1.0f;
+    min_linear_x = -0.6f;
+    min_linear_y = -0.3f;
+    min_angular_z = -1.0f;
+    linear_increment = 0.05f;
+    angular_increment = 0.05f;    
+
     last_key = current_key = Key::KEY_NONE;
     press_m_count = keymode_ == KeyMode::KEY_F1 ? 0 : 1;
     input_fd_ = open("/dev/tty", O_RDWR | O_NOCTTY);
@@ -238,7 +252,7 @@ void KeyBoard::processSingleChar(char c) {
             case 'D': 
                 axis_linear_y -= linear_increment; 
                 axis_linear_y > max_linear_y ? axis_linear_y = max_linear_y : axis_linear_y;
-                axis_linear_y < min_linear_y ? axis_linear_y = min_linear_y : axisLinear_y;
+                axis_linear_y < min_linear_y ? axis_linear_y = min_linear_y : axis_linear_y;
                 break;
             case 'Q': 
                 axis_angular_z += angular_increment; 

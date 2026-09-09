@@ -17,6 +17,7 @@ find_package(rclcpp REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
+find_package(yaml-cpp REQUIRED)
 
 # MuJoCo is optional: when found we compile the real physics path (MujocoEngine), # tmny edit
 # otherwise the plugin uses its built-in PD integrator fallback. Search the CMake
@@ -76,6 +77,10 @@ ament_target_dependencies(${PROJECT_NAME}
   rclcpp_lifecycle
   std_msgs
   std_srvs
+)
+
+target_link_libraries(${PROJECT_NAME}
+  yaml-cpp
 )
 
 if(mujoco_FOUND)
@@ -143,5 +148,5 @@ ament_export_libraries(${PROJECT_NAME})
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_export_dependencies(
   ament_index_cpp geometry_msgs hardware_interface pluginlib rclcpp
-  rclcpp_lifecycle std_msgs std_srvs)
+  rclcpp_lifecycle std_msgs std_srvs yaml-cpp)
 ament_package()

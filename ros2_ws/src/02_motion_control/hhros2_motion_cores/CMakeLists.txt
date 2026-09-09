@@ -7,7 +7,7 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(ONNXRUNTIME_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../external_tools/hhros2_thirdparty/onnxruntime-linux-aarch64-1.27.0" CACHE PATH "ONNX Runtime root directory")
+set(ONNXRUNTIME_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../external_tools/hhros2_thirdparty/onnxruntime-linux-x64-1.27.0" CACHE PATH "ONNX Runtime root directory")
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)

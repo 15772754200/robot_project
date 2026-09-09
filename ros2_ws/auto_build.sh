@@ -34,7 +34,7 @@ fi
 echo "Starting colcon build..."
 colcon build \
     --symlink-install \
-    --cmake-args -DROBOT_MOTOR_BUILD_HARDWARE_RUNTIME=ON \
+    --cmake-args -DROBOT_MOTOR_BUILD_HARDWARE_RUNTIME=OFF \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
     --event-handlers console_direct+
 

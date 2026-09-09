@@ -5,11 +5,13 @@
 # 仅提供启动前/后的清理，确保无残留进程
 # ============================================================
 
-export LD_LIBRARY_PATH=/home/niic/yidong_robot_project/external_tools/hhros2_thirdparty/onnxruntime-linux-aarch64-1.27.0/lib:$LD_LIBRARY_PATH
-
 # 工作目录（根据实际修改）
 WORKSPACE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$WORKSPACE" || exit 1
+
+# 使用相对项目结构的路径设置 ONNX Runtime 库搜索路径
+export LD_LIBRARY_PATH="$WORKSPACE/../external_tools/hhros2_thirdparty/onnxruntime-linux-x64-1.27.0/lib:$LD_LIBRARY_PATH"
+
 source install/setup.bash
 
 # 定义清理函数
@@ -45,9 +47,9 @@ if [ "${1:-}" = "ankle_test" ]; then
     echo "[$(date +%H:%M:%S)] Ankle diagnostic isolation enabled."
 fi
 ros2 launch hhros_bringup bringup.launch.py \
-    hardware:=real \
-    backend:=ecat \
-    enable_imu:=true \
+    hardware:=mujoco \
+    backend:=sim \
+    enable_imu:=false \
     motion_reference_topic:="${MOTION_REFERENCE_TOPIC}"
 
 # bringup 退出后（无论是正常退出还是被中断），trap 会自动执行 cleanup

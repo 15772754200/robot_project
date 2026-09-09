@@ -85,17 +85,17 @@ private:
     std::function<void(uint8_t)> mode_cb_;
     std::function<void(double,double,double)> vel_cb_;
 
-    static double axis_linear_x = 0.0f;
-    static double axis_linear_y = 0.0f;
-    static double axis_angular_z = 0.0f;
-    static double max_linear_x = 0.6f;
-    static double max_linear_y = 0.3f;
-    static double max_angular_z = 1.0f;
-    static double min_linear_x = -0.6f;
-    static double min_linear_y = -0.3f;
-    static double min_angular_z = -1.0f;
-    static double linear_increment = 0.05f;
-    static double angular_increment = 0.05f;    
+    double axis_linear_x;
+    double axis_linear_y;
+    double axis_angular_z;
+    double max_linear_x;
+    double max_linear_y;
+    double max_angular_z;
+    double min_linear_x;
+    double min_linear_y;
+    double min_angular_z;
+    double linear_increment;
+    double angular_increment;    
 };
 
 
