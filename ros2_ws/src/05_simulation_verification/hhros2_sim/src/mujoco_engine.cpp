@@ -15,7 +15,7 @@ namespace
 constexpr char kSafetyRopeTendonName[] = "safety_rope";
 constexpr char kSafetyRopeTrolleyBodyName[] = "safety_trolley";
 constexpr char kSafetyRopeHarnessSiteName[] = "safety_harness";
-constexpr double kSafetyRopeHeldLength = 0.89;
+constexpr double kSafetyRopeHeldLength = 0.72;
 constexpr double kSafetyRopeReleasedLength = 0.92;
 constexpr double kSafetyRopeRaiseSpeed = 0.10;
 }  // namespace

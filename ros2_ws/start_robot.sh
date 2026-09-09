@@ -50,6 +50,8 @@ ros2 launch hhros_bringup bringup.launch.py \
     hardware:=mujoco \
     backend:=sim \
     enable_imu:=false \
+    enable_imu_broadcaster:=true \
+    enable_behavior:=false \
     motion_reference_topic:="${MOTION_REFERENCE_TOPIC}"
 
 # bringup 退出后（无论是正常退出还是被中断），trap 会自动执行 cleanup

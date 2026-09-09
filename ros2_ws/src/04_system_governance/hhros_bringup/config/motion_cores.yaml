@@ -8,7 +8,7 @@ rl_stand_core:
     default_kp: 40.0
     default_kd: 1.0
     damping_kd: 2.0
-    prepare_duration_sec: 1.0
+    prepare_duration_sec: 0.0
     base_state_source: "mujoco"
 
 rl_walk_core:
