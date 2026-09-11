@@ -36,7 +36,7 @@ right_elbow_joint          22
 2. 部署操作步骤
 
 步骤一：进入 ROS2 包路径
-路径：ros2_pkg/robot_ros2/src/robot_pkg/src/policy
+路径：~/ros2_ws/src/02_motion_control/hhros2_motion_cores/config
 
 步骤二：查找配置文件
 找到对应具体模型的配置文件，其中应包含 joint_mapping 配置项。

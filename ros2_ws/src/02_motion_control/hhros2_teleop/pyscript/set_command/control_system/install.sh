@@ -45,7 +45,7 @@ MODE_RUN=4
 # 当前框架没有独立跳跃模式，禁止将旧模式4误当作跳跃模式。
 MODE_JUMP=-1
 MODE_IMITATE=6
-MODE_STOP_STAND=2
+MODE_STOP_STAND=1
 MODE_PREPARE=0
 
 # 显示系统标题
@@ -1385,11 +1385,11 @@ control_stop_stand() {
     read_line confirm "确认已采取安全措施? (y/n): "
     
     if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
-        echo -e "${YELLOW}正在切换到站立模式...${NC}"
-        send_control_mode $MODE_STOP_STAND "切换到站立模式 - 第一次"
+        echo -e "${YELLOW}正在切换到阻尼模式...${NC}"
+        send_control_mode $MODE_STOP_STAND "切换到阻尼模式 - 第一次"
         sleep 0.1
-        send_control_mode $MODE_STOP_STAND "切换到站立模式 - 第二次"
-        echo -e "${GREEN}✓ 已切换到站立模式${NC}"
+        send_control_mode $MODE_STOP_STAND "切换到阻尼模式 - 第二次"
+        echo -e "${GREEN}✓ 已切换到阻尼模式${NC}"
     else
         echo -e "${RED}操作已取消${NC}"
     fi

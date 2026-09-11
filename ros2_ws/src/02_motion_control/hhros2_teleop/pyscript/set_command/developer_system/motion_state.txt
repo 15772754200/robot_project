@@ -1,0 +1,8 @@
+1.可以直接从终端中看到当前机器人正处于什么状态
+2.机器人刚开始处于MODE_PASSIVE，机器人没有控制
+3.当按下1进入MODE_DAMPING，这表示机器人进入准备姿态，可以切换到其他各种模式
+4.RlWalkCore  表示行走
+5.RlStandCore 表示站立
+6.RlRunCore   表示跑步
+7.RlJumpCore  表示跳跃
+8.RlImCore    表示动作模仿，模仿指定的动作，如跳舞，打拳等

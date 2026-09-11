@@ -117,6 +117,7 @@ def main():
         "model_import.txt",
         "model_transfer.txt",
         "motion_retarget.txt",  # 根据图片修正
+        "motion_state.txt"
     ]
     
     # 检查存在的文件

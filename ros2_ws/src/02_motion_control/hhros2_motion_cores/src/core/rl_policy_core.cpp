@@ -525,6 +525,29 @@ bool RlPolicyCore::compute(
     if (!runtime_mode_generation_ready_ ||
         runtime_mode_generation_ != current_mode_generation)
     {
+        // === 切换模型时打印信息 ===
+        if (!runtime_mode_generation_ready_)
+        {
+            RCLCPP_INFO(
+                get_logger(),
+                "[Policy Switch] Node '%s' first activation, "
+                "mode_generation=%u, policy_path='%s'",
+                get_name(),
+                static_cast<unsigned>(current_mode_generation),
+                policy_path_.c_str());
+        }
+        else
+        {
+            RCLCPP_INFO(
+                get_logger(),
+                "[Policy Switch] Node '%s' switching mode: "
+                "mode_generation %u -> %u, policy_path='%s'",
+                get_name(),
+                static_cast<unsigned>(runtime_mode_generation_),
+                static_cast<unsigned>(current_mode_generation),
+                policy_path_.c_str());
+        }
+        // === 打印结束 ===
         runtime_->Reset();
         policy_start_time_ = now();
         prepare_start_time_ = policy_start_time_;

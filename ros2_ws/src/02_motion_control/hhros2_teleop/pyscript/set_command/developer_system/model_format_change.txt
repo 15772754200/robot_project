@@ -5,12 +5,12 @@
 要求：
 1. 训练端提前导出 `.onnx` 模型。
 2. 将 `.onnx` 文件放入对应策略目录，例如：
-   `src/robot_pkg/src/policy/N1/N1_rl_gym/motion.onnx`
+   `ros2_ws/src/02_motion_control/hhros2_motion_cores/model/rl/yd_stand/stand_qing_4_7.onnx`
 3. 在对应 `config.yaml` 中配置：
-   `model_name: "motion.onnx"`
+   `hhros2_motion_cores/config/rl/yd_stand/config.yaml`
 4. 保持 `num_observations`、`observation_stack`、`num_of_dofs` 与导出的 ONNX 输入/输出维度一致。
 
 验证建议：
-1. 执行 `colcon build --packages-select robot_pkg`。
+1. 执行 `ros2_ws目录下的auto_build.sh脚本编译`。
 2. 启动前确认策略目录存在配置中声明的 `.onnx` 文件。
-3. 如果模型加载失败，优先检查文件路径、输入维度、ONNX Runtime 运行库是否随 `robot_pkg` 安装。
+3. 如果模型加载失败，优先检查文件路径、输入维度、ONNX Runtime 运行库是否安装。

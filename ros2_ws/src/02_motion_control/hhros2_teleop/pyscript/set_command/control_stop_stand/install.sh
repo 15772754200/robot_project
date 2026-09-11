@@ -3,8 +3,8 @@
 SET_COMMAND_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SET_COMMAND_SCRIPT_DIR/../common/terminal_io.sh"
 
-# 机器人停止站立控制脚本
-# 当前框架中该操作等价于切换到站立状态 (模式2)
+# 机器人阻尼控制脚本
+# 当前框架中该操作等价于切换到阻尼状态 (模式1)
 
 # 颜色定义
 RED='\033[0;31m'
@@ -22,7 +22,7 @@ EXE_PATH=""
 # 显示帮助
 show_help() {
     echo -e "${GREEN}========================================${NC}"
-    echo -e "${GREEN}      机器人停止站立控制脚本${NC}"
+    echo -e "${GREEN}      机器人阻尼控制脚本${NC}"
     echo -e "${GREEN}========================================${NC}"
     echo ""
     echo -e "${YELLOW}使用方法:${NC}"
@@ -33,7 +33,7 @@ show_help() {
     echo "  -h, --help     显示此帮助信息"
     echo ""
     echo -e "${YELLOW}功能:${NC}"
-    echo "  启动后直接调用指定控制模式服务切换到站立状态 (模式2)"
+    echo "  启动后直接调用指定控制模式服务切换到阻尼状态 (模式1)"
     echo ""
     echo -e "${YELLOW}示例:${NC}"
     echo "  $0 -t /hhros2_core/set_control_mode"
@@ -82,32 +82,32 @@ parse_args() {
     done
 }
 
-# 发送停止站立控制命令
-send_stop_stand_command() {
+# 发送阻尼控制命令
+send_damping_command() {
     echo -e "${CYAN}════════════════════════════════════════${NC}"
-    echo -e "${CYAN}         调用站立控制服务${NC}"
+    echo -e "${CYAN}         调用阻尼控制服务${NC}"
     echo -e "${CYAN}════════════════════════════════════════${NC}"
     echo -e "目标服务: ${YELLOW}$TOPIC${NC}"
-    echo -e "控制模式: ${GREEN}站立 (模式2)${NC}"
+    echo -e "控制模式: ${GREEN}阻尼 (模式1)${NC}"
     echo -e "服务类型: ${GREEN}hhros2_interfaces/srv/SetControlMode${NC}"
-    echo -e "数据值: ${GREEN}2${NC}"
+    echo -e "数据值: ${GREEN}1${NC}"
     echo -e "${CYAN}════════════════════════════════════════${NC}"
     
     # 发送 ROS2 消息
-    echo -e "${YELLOW}调用站立控制服务...${NC}"
+    echo -e "${YELLOW}调用阻尼控制服务...${NC}"
     
     local response
     response="$(ros2 service call "$TOPIC" \
         hhros2_interfaces/srv/SetControlMode \
-        "{mode: 2}" 2>&1)"
+        "{mode: 1}" 2>&1)"
     printf '%s\n' "$response"
     
     if grep -Eq 'success[=:][[:space:]]*(true|True)' <<<"$response"; then
-        echo -e "${GREEN}✓ 成功调用站立控制服务${NC}"
+        echo -e "${GREEN}✓ 成功调用阻尼控制服务${NC}"
         echo -e "${GREEN}✓ 服务: $TOPIC${NC}"
-        echo -e "${GREEN}✓ 消息: 站立 (模式2)${NC}"
+        echo -e "${GREEN}✓ 消息: 阻尼 (模式1)${NC}"
     else
-        echo -e "${RED}✗ 调用站立控制服务失败${NC}"
+        echo -e "${RED}✗ 调用阻尼控制服务失败${NC}"
         echo -e "${YELLOW}可能的原因:${NC}"
         echo -e "  1. ROS2 未启动"
         echo -e "  2. 服务 '$TOPIC' 不存在"
@@ -121,15 +121,15 @@ send_stop_stand_command() {
 # 显示当前状态
 show_status() {
     echo -e "\n${CYAN}════════════════════════════════════════${NC}"
-    echo -e "${CYAN}          停止站立控制状态${NC}"
+    echo -e "${CYAN}          阻尼控制状态${NC}"
     echo -e "${CYAN}════════════════════════════════════════${NC}"
     echo -e "控制模式服务: ${YELLOW}$TOPIC${NC}"
     if [[ -n "$UNIQUE_ID" ]]; then
         echo -e "会话ID: ${BLUE}$UNIQUE_ID${NC}"
     fi
     echo ""
-    echo -e "控制模式: ${GREEN}站立 (模式2)${NC}"
-    echo -e "描述: 当前框架将停止站立操作映射为站立模式${NC}"
+    echo -e "控制模式: ${GREEN}阻尼 (模式1)${NC}"
+    echo -e "描述: 当前框架将阻尼操作映射为阻尼模式${NC}"
     echo -e "${CYAN}════════════════════════════════════════${NC}"
 }
 
@@ -157,7 +157,7 @@ test_topic_existence() {
 show_instructions() {
     clear
     echo -e "${GREEN}════════════════════════════════════════${NC}"
-    echo -e "${GREEN}      机器人停止站立控制${NC}"
+    echo -e "${GREEN}      机器人阻尼控制${NC}"
     echo -e "${GREEN}════════════════════════════════════════${NC}\n"
     
     if [[ -n "$UNIQUE_ID" ]]; then
@@ -165,18 +165,18 @@ show_instructions() {
     fi
     
     echo -e "${YELLOW}[控制命令]${NC}"
-    echo -e "  ${GREEN}S${NC}: 重新发送站立命令"
+    echo -e "  ${GREEN}S${NC}: 重新发送阻尼命令"
     echo -e "  ${GREEN}C${NC}: 显示当前状态"
     echo -e "  ${GREEN}T${NC}: 检查服务是否存在"
     echo -e "  ${RED}X${NC}: 退出程序"
     echo ""
     echo -e "${YELLOW}[控制信息]${NC}"
     echo -e "  控制模式服务: ${YELLOW}$TOPIC${NC}"
-    echo -e "  控制模式: ${GREEN}站立 (模式2)${NC}"
+    echo -e "  控制模式: ${GREEN}阻尼 (模式1)${NC}"
     echo ""
     echo -e "${YELLOW}[功能说明]${NC}"
-    echo -e "  当前框架中该脚本切换机器人到站立状态"
-    echo -e "  启动后会自动发送站立命令 (模式2)"
+    echo -e "  当前框架中该脚本切换机器人到阻尼状态"
+    echo -e "  启动后会自动发送阻尼命令 (模式1)"
     echo -e "${GREEN}════════════════════════════════════════${NC}\n"
 }
 
@@ -194,14 +194,14 @@ control_loop() {
     
     echo ""
     
-    # 脚本启动后立即发送停止站立命令
-    echo -e "${GREEN}脚本启动，发送站立控制命令...${NC}"
-    send_stop_stand_command
+    # 脚本启动后立即发送阻尼命令
+    echo -e "${GREEN}脚本启动，发送阻尼控制命令...${NC}"
+    send_damping_command
     
     if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✓ 站立命令已发送${NC}"
+        echo -e "${GREEN}✓ 阻尼命令已发送${NC}"
     else
-        echo -e "${RED}✗ 发送站立命令失败，继续控制程序${NC}"
+        echo -e "${RED}✗ 发送阻尼命令失败，继续控制程序${NC}"
     fi
     
     while true; do
@@ -209,8 +209,8 @@ control_loop() {
         read_key key
         
         case $key in
-            s|S)  # 重新发送站立命令
-                send_stop_stand_command
+            s|S)  # 重新发送阻尼命令
+                send_damping_command
                 ;;
             c|C)  # 显示状态
                 show_status
@@ -219,13 +219,13 @@ control_loop() {
                 test_topic_existence
                 ;;
             x|X)  # 退出
-                echo -e "${RED}退出停止站立控制程序${NC}"
+                echo -e "${RED}退出阻尼控制程序${NC}"
                 
                 exit 0
                 ;;
             *)
                 if [ -n "$key" ]; then
-                    echo -e "${YELLOW}无效按键，按 S 重新发送站立命令${NC}"
+                    echo -e "${YELLOW}无效按键，按 S 重新发送阻尼命令${NC}"
                 fi
                 ;;
         esac
@@ -234,13 +234,13 @@ control_loop() {
 
 # 安全的退出函数
 safe_exit() {
-    echo -e "${RED}退出停止站立控制程序${NC}"
+    echo -e "${RED}退出阻尼控制程序${NC}"
     exit 0
 }
 
 # 确保退出
 cleanup() {
-    echo -e "${RED}程序退出，停止站立控制结束${NC}"
+    echo -e "${RED}程序退出，阻尼控制结束${NC}"
     exit 0
 }
 
@@ -248,12 +248,12 @@ trap cleanup EXIT INT TERM
 
 # 主程序
 clear
-echo -e "${GREEN}机器人停止站立控制脚本启动中...${NC}"
+echo -e "${GREEN}机器人阻尼控制脚本启动中...${NC}"
 
 # 首先解析所有参数
 parse_args "$@"
 
 echo -e "控制模式服务: ${YELLOW}$TOPIC${NC}"
-echo -e "控制模式: ${GREEN}站立 (模式2)${NC}"
+echo -e "控制模式: ${GREEN}阻尼 (模式1)${NC}"
 
 control_loop

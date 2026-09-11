@@ -120,7 +120,8 @@ def generate_launch_description() -> LaunchDescription:
     rl_assets = {
         "stand": {
             "policy_path": str(
-                motion_cores_share / "model/rl/yd_stand/stand_qing_4_7.onnx"
+                # motion_cores_share / "model/rl/yd_stand/stand_qing_4_7.onnx"
+                motion_cores_share / "model/rl/yd_stand/stand_back.onnx"
             ),
             "observation_config_path": str(
                 motion_cores_share / "config/rl/yd_rl_stand/config.yaml"
