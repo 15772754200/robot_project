@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <chrono>
 #include <cmath>
+#include <thread>
 #include "hhros2_log/log.h"
 
 namespace hhros2_core
@@ -54,6 +55,8 @@ SafetyGovernorNode::SafetyGovernorNode(const rclcpp::NodeOptions & options)
     heartbeat_timeout_s_ =
         declare_parameter<double>("heartbeat_timeout_s", 0.2);
     tilt_fault_rad_ = declare_parameter<double>("tilt_fault_rad", 0.6);
+    l0_liveness_timeout_s_ = declare_parameter<double>("l0_liveness_timeout_s", 0.5);
+    l0_liveness_timeout_s_ = std::max(0.0, l0_liveness_timeout_s_);
     reflex_cut_l0_enable_ =
         declare_parameter<bool>("reflex_cut_l0_enable", false);
 
@@ -91,6 +94,15 @@ SafetyGovernorNode::SafetyGovernorNode(const rclcpp::NodeOptions & options)
     {
         LOG_WARNING(LogType::CONTROLLERLOG,
             "Could not attach shm '%s' yet; enable line will retry lazily.",
+            shm_name_.c_str());
+    }
+    else
+    {
+        // A governance restart must never inherit a previous enable request.
+        shm_.set_enable(false);
+        system_enabled_ = false;
+        LOG_INFO(LogType::CONTROLLERLOG,
+            "Attached shm '%s'; motor enable forced low at startup.",
             shm_name_.c_str());
     }
 
@@ -233,6 +245,29 @@ void SafetyGovernorNode::publish_arbitration(
     mode_pub_->publish(m);
 }
 
+bool SafetyGovernorNode::wait_for_l0_cycle()
+{
+    if (!shm_.is_open())
+    {
+        return false;
+    }
+
+    const auto initial_cycle = shm_.l0_cycle_counter();
+    const auto deadline = std::chrono::steady_clock::now() +
+        std::chrono::duration<double>(l0_liveness_timeout_s_);
+
+    do
+    {
+        if (shm_.l0_cycle_counter() != initial_cycle)
+        {
+            return true;
+        }
+        std::this_thread::sleep_for(5ms);
+    } while (std::chrono::steady_clock::now() < deadline);
+
+    return shm_.l0_cycle_counter() != initial_cycle;
+}
+
 void SafetyGovernorNode::on_set_mode(
     const std::shared_ptr<hhros2_interfaces::srv::SetControlMode::Request> req,
     std::shared_ptr<hhros2_interfaces::srv::SetControlMode::Response> res)
@@ -260,20 +295,83 @@ void SafetyGovernorNode::on_set_system_state(
     const std::shared_ptr<hhros2_interfaces::srv::SetSystemState::Request> req,
     std::shared_ptr<hhros2_interfaces::srv::SetSystemState::Response> res)
 {
-    if (!shm_.is_open())
-    {
-        shm_.open(shm_name_, false);
-    }
     if (req->enable && reflex_active_)
     {
         res->success = false;
         res->message = "cannot enable while safety reflex active";
         return;
     }
-    shm_.set_enable(req->enable);
+
+    if (!shm_.is_open() && !shm_.open(shm_name_, false))
+    {
+        res->success = false;
+        res->message = "L0 shared memory unavailable; motor state not changed";
+        LOG_ERROR(LogType::CONTROLLERLOG,
+            "System state request rejected: cannot attach shm '%s'.",
+            shm_name_.c_str());
+        return;
+    }
+
+    // Do not claim that a command reached the hardware runtime merely because
+    // the shared-memory object exists. An advancing cycle counter proves that
+    // an L0 process currently owns and services this segment.
+    if (req->enable && shm_.l0_fault_code() != 0U)
+    {
+        res->success = false;
+        res->message = "L0 reports a fault; motor enable refused";
+        return;
+    }
+
+    // A stop request is written first so the shared safety line is low even
+    // when the runtime disappears while the request is being handled.
+    if (!req->enable)
+    {
+        shm_.set_enable(false);
+    }
+
+    if (!wait_for_l0_cycle())
+    {
+        res->success = false;
+        res->message = "L0 runtime is not running; motor state not confirmed";
+        if (req->enable)
+        {
+            shm_.set_enable(false);
+        }
+        return;
+    }
+
+    if (req->enable)
+    {
+        shm_.set_enable(true);
+    }
+
+    if (shm_.enabled() != req->enable)
+    {
+        res->success = false;
+        res->message = "failed to update L0 motor enable state";
+        if (req->enable)
+        {
+            shm_.set_enable(false);
+        }
+        return;
+    }
+
+    // Confirm that the L0 loop is still alive after the command was published.
+    if (!wait_for_l0_cycle())
+    {
+        res->success = false;
+        res->message = "L0 stopped while applying motor state; request not confirmed";
+        if (req->enable)
+        {
+            shm_.set_enable(false);
+        }
+        return;
+    }
+
     system_enabled_ = req->enable;
     res->success = true;
     res->message = req->enable ? "system enabled" : "system disabled";
+    LOG_INFO(LogType::CONTROLLERLOG, "System motor enable set to %d.", req->enable);
 }
 
 }  // namespace hhros2_core

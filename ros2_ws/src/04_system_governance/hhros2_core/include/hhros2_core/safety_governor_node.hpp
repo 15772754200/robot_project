@@ -52,6 +52,7 @@ private:
 
     void publish_arbitration(uint8_t mode, const std::string & source);
     void trigger_safe_reflex(const std::string & reason);
+    bool wait_for_l0_cycle();
     void switch_to_controller(
         const std::string & activate, const std::string & deactivate);
 
@@ -60,9 +61,10 @@ private:
     std::string controller_manager_;
     std::string base_controller_;
     std::string damping_controller_;
-    double heartbeat_timeout_s_ = 0.2;
-    double tilt_fault_rad_ = 0.6;
-    bool reflex_cut_l0_enable_ = false;
+    double heartbeat_timeout_s_ = 0.2;    // 心跳超时阀值
+    double tilt_fault_rad_ = 0.6;         // 倾斜故障阀值，单位rad
+    double l0_liveness_timeout_s_ = 0.5;  // l0runtime存活确认超时
+    bool reflex_cut_l0_enable_ = false;   // 安全反射时是否切断L0使能
 
     // state
     std::map<std::string, SubsystemHealth> health_;
